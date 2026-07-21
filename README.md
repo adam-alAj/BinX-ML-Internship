@@ -6,7 +6,7 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 ## 👤 About Me
 
-* **Name:** [Eng. Adam Alafandi]
+* **Name:** Eng. Adam Alafandi
 * **Role:** AI & Machine Learning Intern
 * **Location:** Palestine
 * **GitHub:** [@adam-alAj](https://github.com/adam-alAj)
