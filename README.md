@@ -28,12 +28,13 @@ The **BinX Tech AI & ML Internship Program** is an intensive, practical training
 
 ```
 BinX_ML_Internship/
-├── .venv/                      # Shared Virtual Environment
-├── Day_1/                      # Day 1 Lab & Documentation
-├── Day_2/                      # Day 2 Lab & Documentation
-├── Day_3/                      # Day 3 
-├── Day_4/                      # Day 4 (Upcoming)
-├── Day_5/                      # Day 5 (Upcoming)
+├── .venv/   
+├── week1/             # Shared Virtual Environment
+|     ├── Day_1/                      # Day 1 Lab & Documentation
+|     ├── Day_2/                      # Day 2 Lab & Documentation
+|     ├── Day_3/                      # Day 3 
+|     ├── Day_4/                      # Day 4 (Upcoming)
+|     ├── Day_5/                      # Day 5 (Upcoming)
 |     .
 |     .
 |     .                   
