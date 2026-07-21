@@ -31,12 +31,12 @@ BinX_ML_Internship/
 ├── .venv/                      # Shared Virtual Environment
 ├── Day_1/                      # Day 1 Lab & Documentation
 ├── Day_2/                      # Day 2 Lab & Documentation
-├── Day_3/                      # Day 3 (Upcoming)
+├── Day_3/                      # Day 3 
 ├── Day_4/                      # Day 4 (Upcoming)
-├── Day_5/  
+├── Day_5/                      # Day 5 (Upcoming)
 |     .
 |     .
-|     .                    # Day 5 (Upcoming)
+|     .                   
 ├── .gitignore
 ├── requirements.txt
 └── README.md
@@ -70,11 +70,18 @@ BinX_ML_Internship/
 
 ---
 
-### ⏳ Day 3: Numerical Computing with NumPy *(Upcoming)*
+### Day 3: NumPy: Numerical Computing & Vectorized Operations
 
-* **Focus:** N-dimensional arrays (`ndarray`), array creation, slicing, indexing, boolean masking, and vectorized operations to replace slow Python loops.
+* **Objective:** Building fluency in multi-dimensional numerical computing using NumPy, leveraging vectorized operations, indexing, boolean masking, and broadcasting instead of slow Python loops.
+* **Key Tasks & Accomplishments:**
+  - **Array Creation & Inspection:** Created 1D and 2D arrays using multiple initialization methods (`np.array`, `np.zeros`, `np.ones`, `np.arange`, `np.linspace`, `np.random`) and inspected crucial metadata attributes (`shape`, `dtype`, `ndim`).
+  - **Multi-Dimensional Slicing & Indexing:** Performed precise array slicing across rows and columns using tuple indexing (`array[row, col]`) to extract specific vectors, sub-matrices, and boundary elements.
+  - **Vectorized Operations:** Replaced explicit Python loops with element-wise vectorized arithmetic operations and built-in summary functions (`mean`, `sum`, `std`) for high-performance array computations.
+  - **Boolean Masking:** Applied conditional logical expressions directly to matrices to filter, extract, and manipulate specific numeric data points exceeding target statistical thresholds.
+  - **Broadcasting Mechanics:** Utilized NumPy broadcasting rules to perform element-wise matrix addition and operations between arrays of compatible but non-matching shapes without unnecessary memory duplication.
+  - **Documentation & Reproducibility:** Fixed random seeds (`np.random.seed`) to ensure experimental reproducibility, and thoroughly documented every step in Jupyter Notebook with explanatory Markdown cells.
 
----
+  ---
 
 ### ⏳ Day 4: Tabular Data Processing with Pandas *(Upcoming)*
 
