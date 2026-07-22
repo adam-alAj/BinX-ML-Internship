@@ -84,9 +84,18 @@ BinX_ML_Internship/
 
   ---
 
-### ⏳ Day 4: Tabular Data Processing with Pandas *(Upcoming)*
+### ✅ Day 4: Data Analysis with Pandas
 
-* **Focus:** DataFrames and Series, loading external datasets (CSV/JSON), data inspection, missing value handling, filtering, and aggregation.
+* **Objective:** Mastering tabular data processing — DataFrames, Series, data inspection, filtering, missing value handling, and aggregation.
+* **Key Tasks & Accomplishments:**
+  - Created **Pandas Series** (labeled 1D arrays) and **DataFrames** from dictionaries.
+  - Inspected datasets using `.head()`, `.info()`, and `.describe()` for quick EDA.
+  - Performed **column selection**, **boolean masking**, and advanced indexing (`.loc`, `.iloc`).
+  - Detected and imputed missing values using **median**, **group mean**, and domain-specific defaults.
+  - Aggregated data with **`groupby`** and **`agg`** to compute per-department summary statistics.
+  - Saved the cleaned DataFrame to CSV (`cleaned_employee_data.csv`).
+  - **Hands-On Lab:** Loaded the real-world **MPG automobile dataset** (398 cars, 9 features) and performed an end-to-end EDA — loading, cleaning, filtering, and grouping by manufacturing region to derive insights on fuel efficiency.
+  - **Key Insight:** Japanese cars lead in MPG (avg 30.45) due to lighter weight and lower horsepower compared to US models.
 
 ---
 
