@@ -127,7 +127,7 @@ BinX_ML_Internship/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/adam-alAj/BinX-ML-Internship.git
+   git clone --recurse-submodules https://github.com/adam-alAj/BinX-ML-Internship.git
    cd BinX_ML_Internship
    ```
 
