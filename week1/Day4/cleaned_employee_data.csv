@@ -1,8 +1,0 @@
-Employee_ID,Name,Department,Age,Salary,Experience_Years
-101,Alice,HR,25.0,50000.0,2.0
-102,Bob,IT,30.0,75000.0,5.0
-103,Charlie,IT,35.0,82000.0,8.0
-104,David,Finance,29.5,65000.0,4.0
-105,Eva,HR,22.0,50000.0,1.0
-106,Frank,Finance,40.0,90000.0,12.0
-107,Grace,IT,29.0,72000.0,0.0
