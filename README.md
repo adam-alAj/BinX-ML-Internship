@@ -33,8 +33,8 @@ BinX_ML_Internship/
 |     ├── Day_1/                      # Day 1 Lab & Documentation
 |     ├── Day_2/                      # Day 2 Lab & Documentation
 |     ├── Day_3/                      # Day 3 
-|     ├── Day_4/                      # Day 4 (Upcoming)
-|     ├── Day_5/                      # Day 5 (Upcoming)
+|     ├── Day_4/                      # Day 4 — Data Analysis with Pandas
+|     ├── Day_5/                      # Day 5 — Data Visualization Mini-Project
 |     .
 |     .
 |     .                   
@@ -99,9 +99,19 @@ BinX_ML_Internship/
 
 ---
 
-### ⏳ Day 5: Data Visualization with Matplotlib & Week 1 Wrap-up *(Upcoming)*
+### ✅ Day 5: Data Visualization Mini-Project & EDA
 
-* **Focus:** Plotting line charts, scatter plots, histograms, and bar charts; customizing plot labels, titles, legends; compiling the Week 1 comprehensive report.
+* **Objective:** Integrating all Week 1 skills (NumPy, Pandas, Matplotlib) into a comprehensive exploratory data analysis with visual communication.
+* **Key Tasks & Accomplishments:**
+  - Loaded the **MPG automobile dataset** (398 cars, 9 features) from the Seaborn GitHub repository.
+  - Engineered new features using **vectorized NumPy operations**: converted MPG to KPL (Kilometers Per Liter) and created an `efficiency_category` column (High/Medium/Low).
+  - Computed **NumPy statistical metrics** (mean, std dev, percentiles, IQR) on weight and horsepower arrays.
+  - **Line Plot:** Tracked average MPG over model years (1970–1982), revealing a ~76% efficiency increase driven by oil crises and CAFE standards.
+  - **Scatter Plot:** Visualized the strong negative correlation between vehicle weight and MPG, colored by manufacturing origin (USA, Europe, Japan).
+  - **Bar Plot:** Compared average MPG by origin — Japan leads (30.45 MPG), USA lags (20.08 MPG).
+  - **Histogram:** Identified a bimodal MPG distribution reflecting two distinct market segments (economy vs. performance).
+  - **Combined 2×2 Subplots Grid:** Merged all four visualizations into a professional, publication-ready figure.
+  - **Key Insight:** Weight is the strongest predictor of fuel economy; Japanese cars dominate efficiency due to lighter design and lower horsepower.
 
 ---
 
