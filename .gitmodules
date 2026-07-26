@@ -1,3 +1,6 @@
 [submodule "BinX_Week_01"]
 	path = BinX_Week_01
 	url = https://github.com/adam-alAj/BinX_Week_01.git
+[submodule "BinX_Week_02"]
+	path = BinX_Week_02
+	url = https://github.com/adam-alAj/BinX_Week_02.git
