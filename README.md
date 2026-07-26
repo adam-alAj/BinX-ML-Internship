@@ -18,8 +18,8 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 The **BinX Tech AI & ML Internship Program** is an intensive, practical training program designed to build industry-ready skills in Artificial Intelligence, Machine Learning, and Data Science.
 
-* **Track:** Phase 1 — Foundations (40 Hours / Week 1)
-* **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, and Matplotlib Data Visualization.
+* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations (In Progress)
+* **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, and Statistical Analysis with Real Datasets.
 * **Core Principle:** Professional, reproducible Jupyter Notebook workflows fully documented with Markdown narratives and pushed regularly via Git/GitHub.
 
 ---
@@ -28,19 +28,18 @@ The **BinX Tech AI & ML Internship Program** is an intensive, practical training
 
 ```
 BinX_ML_Internship/
-├── .venv/                            # Shared Virtual Environment
-├── week1/             
-|     ├── Day_1/                      # Day 1 Lab & Documentation
-|     ├── Day_2/                      # Day 2 Lab & Documentation
-|     ├── Day_3/                      # Day 3 
-|     ├── Day_4/                      # Day 4 — Data Analysis with Pandas
-|     ├── Day_5/                      # Day 5 — Data Visualization Mini-Project
-|     .
-|     .
-|     .                   
+├── .venv/                             # Shared Virtual Environment
+├── BinX_Week_01/                      # Week 1: Foundations (Completed ✅)
+│   ├── Day1/                          # Environment Setup
+│   ├── Day2/                          # Python Fundamentals & OOP
+│   ├── Day3/                          # NumPy Numerical Computing
+│   ├── Day4/                          # Pandas Data Analysis
+│   └── Day5/                          # Data Visualization Mini-Project
+├── BinX_Week_02/                      # Week 2: Statistics & ML (In Progress 🚧)
+│   └── Day1/                          # Descriptive Statistics on Real Dataset
 ├── .gitignore
 ├── requirements.txt
-└── README.md
+└── README.md                          # ← You are here
 ```
 
 ---
@@ -112,6 +111,31 @@ BinX_ML_Internship/
   - **Histogram:** Identified a bimodal MPG distribution reflecting two distinct market segments (economy vs. performance).
   - **Combined 2×2 Subplots Grid:** Merged all four visualizations into a professional, publication-ready figure.
   - **Key Insight:** Weight is the strongest predictor of fuel economy; Japanese cars dominate efficiency due to lighter design and lower horsepower.
+
+---
+
+## 📅 Week 2: Statistical Analysis & Machine Learning Foundations (In Progress 🚧)
+
+---
+
+### ✅ Day 1: Descriptive Statistics on a Real Dataset
+
+* **Objective:** Computing and interpreting descriptive statistics (central tendency & dispersion) on a real-world dataset.
+* **Dataset:** Titanic passenger list (891 records) — analyzed the `Fare` column.
+* **Key Tasks & Accomplishments:**
+  - Loaded the Titanic dataset from a public GitHub repository using Pandas (`pd.read_csv`).
+  - Calculated **central tendency** metrics:
+    - **Mean:** \$32.20 (inflated by luxury-class outliers)
+    - **Median:** \$14.45 (better represents the typical passenger)
+    - **Mode:** \$8.05 (most common fare paid)
+  - Calculated **dispersion/spread** metrics:
+    - **Variance:** 2469.44
+    - **Standard Deviation:** \$49.69 (high variability)
+    - **IQR:** \$23.09 (middle 50% range: \$7.91 – \$31.00)
+  - Detected **right-skewness** by comparing Mean (\$32.20) vs Median (\$14.45) — the mean is pulled upward by extreme high-value fares (up to \$512.33).
+  - Concluded that the **Median is the preferred measure** of center for skewed data, as over 70% of passengers paid less than the mean price.
+  - Wrote a **plain-language summary report** bridging raw statistics to actionable insights.
+  - **Tools used:** NumPy (`np.mean`, `np.median`, `np.percentile`, `np.var`, `np.std`), Pandas (`pd.read_csv`, `.dropna()`), SciPy (`stats.mode`).
 
 ---
 
