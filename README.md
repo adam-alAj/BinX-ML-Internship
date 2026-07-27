@@ -36,7 +36,8 @@ BinX_ML_Internship/
 │   ├── Day4/                          # Pandas Data Analysis
 │   └── Day5/                          # Data Visualization Mini-Project
 ├── BinX_Week_02/                      # Week 2: Statistics & ML (In Progress 🚧)
-│   └── Day1/                          # Descriptive Statistics on Real Dataset
+│   ├── Day1/                          # Descriptive Statistics on Real Dataset
+│   └── Day2/                          # Probability Fundamentals & Distributions
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -136,6 +137,21 @@ BinX_ML_Internship/
   - Concluded that the **Median is the preferred measure** of center for skewed data, as over 70% of passengers paid less than the mean price.
   - Wrote a **plain-language summary report** bridging raw statistics to actionable insights.
   - **Tools used:** NumPy (`np.mean`, `np.median`, `np.percentile`, `np.var`, `np.std`), Pandas (`pd.read_csv`, `.dropna()`), SciPy (`stats.mode`).
+
+### ✅ Day 2: Probability Fundamentals & Probability Distributions
+
+* **Objective:** Understanding core probability concepts and common probability distributions through Python numerical simulations.
+* **Key Tasks & Accomplishments:**
+  - Simulated **fair coin flips** at increasing trial sizes (10 to 100,000) to demonstrate the **Law of Large Numbers** — empirical probability converged to 0.5.
+  - Applied **Conditional Probability & Bayes' Theorem** on synthetic email data to simulate a spam filter scenario.
+  - Visualized and analyzed **four key probability distributions**:
+    - **Normal Distribution:** Simulated human heights (mean=170cm, std=10cm) — bell curve.
+    - **Binomial Distribution:** Coin flip success counts with `scipy.stats.binom`.
+    - **Poisson Distribution:** Modeled customer arrival rates ($\lambda = 5$).
+    - **Uniform Distribution:** Continuous random sampling over $[0, 1)$.
+  - Verified the **Empirical Rule (68-95-99.7)** for the Normal Distribution.
+  - Connected each distribution to its real-world **Machine Learning application**.
+  - **Tools used:** NumPy (`np.random`), SciPy (`stats.norm`, `stats.binom`, `stats.poisson`, `stats.uniform`), Matplotlib, Seaborn.
 
 ---
 
