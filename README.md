@@ -37,7 +37,8 @@ BinX_ML_Internship/
 │   └── Day5/                          # Data Visualization Mini-Project
 ├── BinX_Week_02/                      # Week 2: Statistics & ML (In Progress 🚧)
 │   ├── Day1/                          # Descriptive Statistics on Real Dataset
-│   └── Day2/                          # Probability Fundamentals & Distributions
+│   ├── Day2/                          # Probability Fundamentals & Distributions
+│   └── Day3/                          # Vectors, Matrices & Predictions (Linear Algebra for ML)
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -152,6 +153,17 @@ BinX_ML_Internship/
   - Verified the **Empirical Rule (68-95-99.7)** for the Normal Distribution.
   - Connected each distribution to its real-world **Machine Learning application**.
   - **Tools used:** NumPy (`np.random`), SciPy (`stats.norm`, `stats.binom`, `stats.poisson`, `stats.uniform`), Matplotlib, Seaborn.
+
+### ✅ Day 3: Vectors, Matrices & Predictions — Linear Algebra Foundations for ML
+
+* **Objective:** Mastering linear algebra concepts in NumPy and connecting them to how ML models represent data and make predictions.
+* **Key Tasks & Accomplishments:**
+  - **Vectors & Dot Products:** Created feature vectors (house area, bedrooms, age) and weight vectors, computing dot products via manual loops, `np.dot()`, and the `@` operator. Calculated L2 norms with `np.linalg.norm()`.
+  - **Matrices & Transpose:** Built a dataset matrix $X$ with 5 samples × 3 features, and explored transposition with `.T`.
+  - **Batch Predictions:** Used matrix-matrix multiplication $(X \cdot W)$ to compute two outputs (Price & Rent) simultaneously across all samples, verifying the $(m \times n) \times (n \times p) \to (m \times p)$ shape rule.
+  - **Linear Regression Simulation:** Generated random synthetic data (10 samples, 4 features) and computed predictions $\hat{y} = Xw + b$ using `np.dot()` with a bias term.
+  - **Shape Error Handling:** Deliberately triggered and caught a `ValueError` for dimension mismatch, then corrected the weight matrix shape to resolve it.
+  - **Tools used:** NumPy (`np.dot`, `np.matmul`, `@`, `np.linalg.norm`, `np.random`, `.shape`, `.T`).
 
 ---
 
