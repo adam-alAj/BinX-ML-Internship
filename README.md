@@ -38,7 +38,8 @@ BinX_ML_Internship/
 ├── BinX_Week_02/                      # Week 2: Statistics & ML (In Progress 🚧)
 │   ├── Day1/                          # Descriptive Statistics on Real Dataset
 │   ├── Day2/                          # Probability Fundamentals & Distributions
-│   └── Day3/                          # Vectors, Matrices & Predictions (Linear Algebra for ML)
+│   ├── Day3/                          # Vectors, Matrices & Predictions (Linear Algebra for ML)
+│   └── Day4/                          # Univariate EDA on a Real Dataset
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -165,7 +166,20 @@ BinX_ML_Internship/
   - **Shape Error Handling:** Deliberately triggered and caught a `ValueError` for dimension mismatch, then corrected the weight matrix shape to resolve it.
   - **Tools used:** NumPy (`np.dot`, `np.matmul`, `@`, `np.linalg.norm`, `np.random`, `.shape`, `.T`).
 
----
+### ✅ Day 4: Univariate EDA on a Real Dataset
+
+* **Objective:** Conducting a comprehensive univariate exploratory data analysis on a real-world dataset using Seaborn and Pandas.
+* **Dataset:** Titanic passenger dataset (891 records, 15 columns) loaded via `sns.load_dataset("titanic")`.
+* **Key Tasks & Accomplishments:**
+  - **Histograms + KDE:** Plotted distributions for `age`, `fare`, `sibsp`, `parch` — found `age` roughly normal, `fare` heavily right-skewed, `sibsp`/`parch` discrete and skewed toward 0.
+  - **Box Plots:** Visualized outliers in `age` (infants & elderly) and `fare` (extreme right-side outliers up to $500).
+  - **IQR Outlier Detection:** Applied the IQR method to `fare` — flagged 116 outliers (~13%). Decided to **cap (winsorize)** rather than drop to retain valid 1st-class luxury ticket data.
+  - **Count Plots:** Visualized categorical variables (`sex`, `class`, `embarked`, `survived`) with percentage annotations — documented mild-to-significant class imbalances (e.g., target 61.6%/38.4%).
+  - **Summary:** Documented modeling implications: log-transformation for skewed features, F1-Score for imbalanced target, encoding strategy for categoricals.
+  - **Tools used:** Pandas, NumPy (`np.where` for capping), Matplotlib, Seaborn (`histplot`, `boxplot`, `countplot`).
+
+
+
 
 ## 🛠️ Tech Stack & Tools
 
