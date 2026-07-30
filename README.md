@@ -35,11 +35,12 @@ BinX_ML_Internship/
 │   ├── Day3/                          # NumPy Numerical Computing
 │   ├── Day4/                          # Pandas Data Analysis
 │   └── Day5/                          # Data Visualization Mini-Project
-├── BinX_Week_02/                      # Week 2: Statistics & ML (In Progress 🚧)
+├── BinX_Week_02/                      # Week 2: Statistics & ML (Completed ✅)
 │   ├── Day1/                          # Descriptive Statistics on Real Dataset
 │   ├── Day2/                          # Probability Fundamentals & Distributions
 │   ├── Day3/                          # Vectors, Matrices & Predictions (Linear Algebra for ML)
-│   └── Day4/                          # Univariate EDA on a Real Dataset
+│   ├── Day4/                          # Univariate EDA on a Real Dataset
+│   └── Day5/                          # Comprehensive EDA Full Pipeline
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -117,7 +118,7 @@ BinX_ML_Internship/
 
 ---
 
-## 📅 Week 2: Statistical Analysis & Machine Learning Foundations (In Progress 🚧)
+## 📅 Week 2: Statistical Analysis & Machine Learning Foundations (Completed ✅)
 
 ---
 
@@ -167,6 +168,30 @@ BinX_ML_Internship/
   - **Tools used:** NumPy (`np.dot`, `np.matmul`, `@`, `np.linalg.norm`, `np.random`, `.shape`, `.T`).
 
 ### ✅ Day 4: Univariate EDA on a Real Dataset
+
+* **Objective:** Conducting a comprehensive univariate exploratory data analysis on a real-world dataset using Seaborn and Pandas.
+* **Dataset:** Titanic passenger dataset (891 records, 15 columns) loaded via `sns.load_dataset("titanic")`.
+* **Key Tasks & Accomplishments:**
+  - **Histograms + KDE:** Plotted distributions for `age`, `fare`, `sibsp`, `parch` — found `age` roughly normal, `fare` heavily right-skewed, `sibsp`/`parch` discrete and skewed toward 0.
+  - **Box Plots:** Visualized outliers in `age` (infants & elderly) and `fare` (extreme right-side outliers up to $500).
+  - **IQR Outlier Detection:** Applied the IQR method to `fare` — flagged 116 outliers (~13%). Decided to **cap (winsorize)** rather than drop to retain valid 1st-class luxury ticket data.
+  - **Count Plots:** Visualized categorical variables (`sex`, `class`, `embarked`, `survived`) with percentage annotations — documented mild-to-significant class imbalances (e.g., target 61.6%/38.4%).
+  - **Summary:** Documented modeling implications: log-transformation for skewed features, F1-Score for imbalanced target, encoding strategy for categoricals.
+  - **Tools used:** Pandas, NumPy (`np.where` for capping), Matplotlib, Seaborn (`histplot`, `boxplot`, `countplot`).
+
+### ✅ Day 5: Comprehensive EDA — Full Pipeline
+
+* **Objective:** Combining descriptive statistics, univariate/bivariate analysis, outlier detection, correlation analysis, and data storytelling into a single reproducible ML-ready pipeline.
+* **Dataset:** Titanic passenger dataset (891 records, 12 columns) loaded from raw GitHub source.
+* **Key Tasks & Accomplishments:**
+  - **Summary Statistics:** Computed `.describe()` on all numeric columns — 38.4% survival rate, mean age 29.7, fare heavily right-skewed.
+  - **Missing Value Analysis:** Found Age (19.9%), Cabin (77.1%), and Embarked (0.2%) missing — documented handling strategies for each.
+  - **Univariate Analysis:** Histograms + KDE for numeric variables; count plots for categorical variables with percentage annotations.
+  - **Outlier Detection:** Box plots and IQR method on `fare` — flagged 116 outliers (~13%), capped at upper bound.
+  - **Bivariate Analysis:** Explored relationships between every feature and `Survived` — sex (females ~74% survival), class (1st class ~63%), and fare were strongest predictors.
+  - **Correlation Analysis:** Computed Pearson correlation matrix + heatmap — key correlations: Survived↔Sex (0.54), Survived↔Pclass (-0.34), Pclass↔Fare (-0.55).
+  - **Data Storytelling:** Compiled all insights into ML recommendations — feature engineering (FamilySize, Age bins, Title extraction), encoding strategy (OHE, Ordinal), algorithm selection (Gradient Boosting / Random Forest), and evaluation (F1-Score, ROC-AUC).
+  - **Tools used:** Pandas, NumPy, Matplotlib, Seaborn (`histplot`, `boxplot`, `countplot`, `barplot`, `heatmap`), IQR method, Pearson correlation.
 
 * **Objective:** Conducting a comprehensive univariate exploratory data analysis on a real-world dataset using Seaborn and Pandas.
 * **Dataset:** Titanic passenger dataset (891 records, 15 columns) loaded via `sns.load_dataset("titanic")`.
