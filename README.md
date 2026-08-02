@@ -41,6 +41,8 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Vectors, Matrices & Predictions (Linear Algebra for ML)
 │   ├── Day4/                          # Univariate EDA on a Real Dataset
 │   └── Day5/                          # Comprehensive EDA Full Pipeline
+├── BinX_Week_03/                      # Week 3: ML Workflow Foundations (In Progress 🔄)
+│   └── Day1/                          # Setting Up the ML Workflow
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -193,18 +195,21 @@ BinX_ML_Internship/
   - **Data Storytelling:** Compiled all insights into ML recommendations — feature engineering (FamilySize, Age bins, Title extraction), encoding strategy (OHE, Ordinal), algorithm selection (Gradient Boosting / Random Forest), and evaluation (F1-Score, ROC-AUC).
   - **Tools used:** Pandas, NumPy, Matplotlib, Seaborn (`histplot`, `boxplot`, `countplot`, `barplot`, `heatmap`), IQR method, Pearson correlation.
 
-* **Objective:** Conducting a comprehensive univariate exploratory data analysis on a real-world dataset using Seaborn and Pandas.
-* **Dataset:** Titanic passenger dataset (891 records, 15 columns) loaded via `sns.load_dataset("titanic")`.
+---
+
+## 📅 Week 3: Machine Learning Workflow Foundations (In Progress 🔄)
+
+### ✅ Day 1: Setting Up the ML Workflow
+
+* **Objective:** Establishing a clean and reproducible machine learning workflow using a notebook-first structure.
 * **Key Tasks & Accomplishments:**
-  - **Histograms + KDE:** Plotted distributions for `age`, `fare`, `sibsp`, `parch` — found `age` roughly normal, `fare` heavily right-skewed, `sibsp`/`parch` discrete and skewed toward 0.
-  - **Box Plots:** Visualized outliers in `age` (infants & elderly) and `fare` (extreme right-side outliers up to $500).
-  - **IQR Outlier Detection:** Applied the IQR method to `fare` — flagged 116 outliers (~13%). Decided to **cap (winsorize)** rather than drop to retain valid 1st-class luxury ticket data.
-  - **Count Plots:** Visualized categorical variables (`sex`, `class`, `embarked`, `survived`) with percentage annotations — documented mild-to-significant class imbalances (e.g., target 61.6%/38.4%).
-  - **Summary:** Documented modeling implications: log-transformation for skewed features, F1-Score for imbalanced target, encoding strategy for categoricals.
-  - **Tools used:** Pandas, NumPy (`np.where` for capping), Matplotlib, Seaborn (`histplot`, `boxplot`, `countplot`).
+  - Organized the notebook workflow around a practical data-to-model progression.
+  - Loaded and inspected the dataset to understand its general shape and columns.
+  - Separated the target variable from the feature space in preparation for modeling.
+  - Documented the baseline workflow for future experimentation and reuse.
+  - Created the Week 3 Day 1 README to clearly represent the session’s learning path and artifacts.
 
-
-
+---
 
 ## 🛠️ Tech Stack & Tools
 
