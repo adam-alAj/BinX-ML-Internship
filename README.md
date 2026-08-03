@@ -197,17 +197,26 @@ BinX_ML_Internship/
 
 ---
 
-## 📅 Week 3: Machine Learning Workflow Foundations (In Progress 🔄)
+### 📅 Week 3: Machine Learning Workflow Foundations (In Progress 🔄)
 
-### ✅ Day 1: Setting Up the ML Workflow
-
+#### ✅ Day 1: Setting Up the ML Workflow
 * **Objective:** Establishing a clean and reproducible machine learning workflow using a notebook-first structure.
 * **Key Tasks & Accomplishments:**
   - Organized the notebook workflow around a practical data-to-model progression.
   - Loaded and inspected the dataset to understand its general shape and columns.
   - Separated the target variable from the feature space in preparation for modeling.
   - Documented the baseline workflow for future experimentation and reuse.
-  - Created the Week 3 Day 1 README to clearly represent the session’s learning path and artifacts.
+
+#### ✅ Day 2: Predicting Continuous Values with Linear Regression
+* **Objective:** Implementing a complete Linear Regression workflow to predict continuous values, interpret coefficients, and validate model performance against a baseline.
+* **Key Tasks & Accomplishments:**
+  - Loaded the California Housing dataset and selected a 5-feature subset for modeling.
+  - Trained a `LinearRegression` model and extracted intercept/coefficients to interpret feature influence.
+  - Evaluated model performance on unseen test data using **MAE** (~0.58), **RMSE** (~0.80), and **R²** (~0.51).
+  - Constructed a naive mean-baseline predictor and compared its RMSE (~1.14) against the model RMSE.
+  - Verified the model delivers a **~30% error reduction** over the baseline, confirming predictive value.
+  - Documented coefficient interpretation and business insights in reproducible Markdown.
+* **Tools used:** `scikit-learn` (`LinearRegression`, `train_test_split`, metrics), NumPy, Pandas, Matplotlib, Seaborn.
 
 ---
 
