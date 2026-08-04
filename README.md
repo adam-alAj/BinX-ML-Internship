@@ -42,7 +42,9 @@ BinX_ML_Internship/
 │   ├── Day4/                          # Univariate EDA on a Real Dataset
 │   └── Day5/                          # Comprehensive EDA Full Pipeline
 ├── BinX_Week_03/                      # Week 3: ML Workflow Foundations (In Progress 🔄)
-│   └── Day1/                          # Setting Up the ML Workflow
+│   ├── Day1/                          # Setting Up the ML Workflow
+│   ├── Day2/                          # Linear Regression Predictions
+│   └── Day3/                          # Logistic Regression Classifier
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -217,6 +219,18 @@ BinX_ML_Internship/
   - Verified the model delivers a **~30% error reduction** over the baseline, confirming predictive value.
   - Documented coefficient interpretation and business insights in reproducible Markdown.
 * **Tools used:** `scikit-learn` (`LinearRegression`, `train_test_split`, metrics), NumPy, Pandas, Matplotlib, Seaborn.
+
+#### ✅ Day 3: Building and Evaluating a Logistic Regression Classifier
+* **Objective:** Implementing a complete binary classification workflow to predict customer churn — training a Logistic Regression model, evaluating it with a Confusion Matrix, interpreting Precision/Recall/F1 metrics, and assessing discrimination power using the ROC curve and AUC.
+* **Key Tasks & Accomplishments:**
+  - Generated a synthetic customer churn dataset (1,000 samples, 5 features, ~25% churn) using `make_classification` and performed a stratified 80/20 train/test split.
+  - Trained a `LogisticRegression` model and interpreted the intercept (-0.5307) and coefficients: `Contract_Length` (+0.4619) and `Payment_Delay` (+0.2257) raise churn odds, `Support_Calls` (-0.2958) lowers them.
+  - Evaluated predictions on the test set with a **Confusion Matrix** (TN=142, FP=7, FN=38, TP=13).
+  - Computed Churn-class metrics: **Precision 0.6500**, **Recall 0.2549**, **F1-Score 0.3662**, overall accuracy 78%.
+  - Concluded **Recall is the priority metric** for churn: a missed churner (FN) costs customer lifetime value, while a False Positive only costs a low-value retention offer.
+  - Assessed discrimination capability with the **ROC-AUC score (0.6986)** and ROC curve vs. random chance — moderate performance.
+  - Documented next steps: feature engineering, threshold tuning, and non-linear models (Random Forest, XGBoost) to improve recall.
+* **Tools used:** `scikit-learn` (`make_classification`, `LogisticRegression`, `train_test_split`, `confusion_matrix`, `classification_report`, `roc_auc_score`, `roc_curve`), NumPy, Pandas, Matplotlib, Seaborn.
 
 ---
 
