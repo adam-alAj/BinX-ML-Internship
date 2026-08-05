@@ -44,7 +44,8 @@ BinX_ML_Internship/
 ├── BinX_Week_03/                      # Week 3: ML Workflow Foundations (In Progress 🔄)
 │   ├── Day1/                          # Setting Up the ML Workflow
 │   ├── Day2/                          # Linear Regression Predictions
-│   └── Day3/                          # Logistic Regression Classifier
+│   ├── Day3/                          # Logistic Regression Classifier
+│   └── Day4/                          # Model Comparison & Feature Importance
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -231,6 +232,16 @@ BinX_ML_Internship/
   - Assessed discrimination capability with the **ROC-AUC score (0.6986)** and ROC curve vs. random chance — moderate performance.
   - Documented next steps: feature engineering, threshold tuning, and non-linear models (Random Forest, XGBoost) to improve recall.
 * **Tools used:** `scikit-learn` (`make_classification`, `LogisticRegression`, `train_test_split`, `confusion_matrix`, `classification_report`, `roc_auc_score`, `roc_curve`), NumPy, Pandas, Matplotlib, Seaborn.
+
+#### ✅ Day 4: Model Comparison & Feature Importance
+* **Objective:** Performing a comprehensive model selection study by benchmarking four classification algorithms — Decision Tree, Random Forest, SVM, and k-NN — on a customer churn dataset, and justifying the winning model with metrics and theory.
+* **Key Tasks & Accomplishments:**
+  - Generated a synthetic churn dataset (1,000 samples, 8 features, 80% stay / 20% churn) consistent with Day 3, and performed a stratified 80/20 split with `StandardScaler` fit on train only.
+  - Trained four classifiers: **Decision Tree** (`max_depth=5`), **Random Forest** (100 trees), **SVM (RBF kernel)**, and **k-NN (k=5)**.
+  - Compared all models using **Accuracy, Precision, Recall, F1-Score, and AUC-ROC** — **k-NN (k=5) won with F1-Score 0.8000, Accuracy 93.0%, and perfect Precision 1.0000** (zero false positives).
+  - Analyzed Random Forest **feature importances** — `monthly_charges` (0.280) and `tenure_months` (0.232) are the strongest churn drivers.
+  - Justified the winning model from both empirical metrics and theoretical characteristics (scaling benefit, tight local clusters, tree split limitations).
+* **Tools used:** `scikit-learn` (`DecisionTreeClassifier`, `RandomForestClassifier`, `SVC`, `KNeighborsClassifier`, `StandardScaler`, `train_test_split`, metrics), NumPy, Pandas, Matplotlib, Seaborn.
 
 ---
 
