@@ -41,11 +41,12 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Vectors, Matrices & Predictions (Linear Algebra for ML)
 │   ├── Day4/                          # Univariate EDA on a Real Dataset
 │   └── Day5/                          # Comprehensive EDA Full Pipeline
-├── BinX_Week_03/                      # Week 3: ML Workflow Foundations (In Progress 🔄)
+├── BinX_Week_03/                      # Week 3: ML Workflow Foundations (Completed ✅)
 │   ├── Day1/                          # Setting Up the ML Workflow
 │   ├── Day2/                          # Linear Regression Predictions
 │   ├── Day3/                          # Logistic Regression Classifier
-│   └── Day4/                          # Model Comparison & Feature Importance
+│   ├── Day4/                          # Model Comparison & Feature Importance
+│   └── Day5-mini-project/             # End-to-End Titanic Survival Prediction
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -200,7 +201,7 @@ BinX_ML_Internship/
 
 ---
 
-### 📅 Week 3: Machine Learning Workflow Foundations (In Progress 🔄)
+### 📅 Week 3: Machine Learning Workflow Foundations (Completed ✅)
 
 #### ✅ Day 1: Setting Up the ML Workflow
 * **Objective:** Establishing a clean and reproducible machine learning workflow using a notebook-first structure.
@@ -242,6 +243,17 @@ BinX_ML_Internship/
   - Analyzed Random Forest **feature importances** — `monthly_charges` (0.280) and `tenure_months` (0.232) are the strongest churn drivers.
   - Justified the winning model from both empirical metrics and theoretical characteristics (scaling benefit, tight local clusters, tree split limitations).
 * **Tools used:** `scikit-learn` (`DecisionTreeClassifier`, `RandomForestClassifier`, `SVC`, `KNeighborsClassifier`, `StandardScaler`, `train_test_split`, metrics), NumPy, Pandas, Matplotlib, Seaborn.
+
+#### ✅ Day 5: End-to-End Titanic Survival Prediction Mini-Project
+* **Objective:** Building a complete end-to-end Machine Learning pipeline — from raw data to a selected model — that predicts passenger survival on the Titanic dataset, tying together workflow design, preprocessing, baseline benchmarking, classification, evaluation, and model selection.
+* **Key Tasks & Accomplishments:**
+  - Loaded the **Titanic dataset** (891 passengers) from Seaborn, selected 7 features, and split **80/20 with stratification before any preprocessing** to prevent data leakage.
+  - Built a `ColumnTransformer` pipeline — median imputation + `StandardScaler` for numeric features, most-frequent imputation + `OneHotEncoder(drop='first')` for categoricals — fitted **on the training set only**.
+  - Established a **DummyClassifier baseline** (most-frequent class): 61.5% accuracy, 0.0 Precision/Recall/F1, AUC 0.5.
+  - Trained **Logistic Regression** (79.9% accuracy, Precision 77.9%, Recall 66.7%, F1 0.72, AUC 0.84) and **Random Forest** (81.0% accuracy, Precision 85.7%, Recall 60.9%, F1 0.71, AUC 0.84).
+  - Broke down the **Confusion Matrices** — Logistic Regression: TN=97, FP=13, FN=23, TP=46; Random Forest: TN=103, FP=7, FN=27, TP=42 — and visualized them with a heatmap plus a full performance comparison bar chart.
+  - **Selected Random Forest** as the winning model: highest Precision (85.7%) and Accuracy (81.0%), comparable AUC-ROC, and natural capture of non-linear interactions ("women and children first").
+* **Tools used:** `scikit-learn` (`train_test_split`, `ColumnTransformer`, `Pipeline`, `SimpleImputer`, `StandardScaler`, `OneHotEncoder`, `DummyClassifier`, `LogisticRegression`, `RandomForestClassifier`, metrics), Pandas, NumPy, Matplotlib, Seaborn.
 
 ---
 
