@@ -18,8 +18,8 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 The **BinX Tech AI & ML Internship Program** is an intensive, practical training program designed to build industry-ready skills in Artificial Intelligence, Machine Learning, and Data Science.
 
-* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations (In Progress)
-* **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, and Statistical Analysis with Real Datasets.
+* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (In Progress)
+* **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, Statistical Analysis with Real Datasets, and scikit-learn Machine Learning Workflows.
 * **Core Principle:** Professional, reproducible Jupyter Notebook workflows fully documented with Markdown narratives and pushed regularly via Git/GitHub.
 
 ---
@@ -47,6 +47,8 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Logistic Regression Classifier
 │   ├── Day4/                          # Model Comparison & Feature Importance
 │   └── Day5-mini-project/             # End-to-End Titanic Survival Prediction
+├── BinX_Week_04/                      # Week 4: Evaluation, Tuning & Pipelines (In Progress)
+│   └── Day1/                          # Three-Way Split (Train / Validation / Test)
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -257,10 +259,24 @@ BinX_ML_Internship/
 
 ---
 
+### 📅 Week 4: Evaluation, Tuning & Pipelines (In Progress)
+
+#### ✅ Day 1: Building a Three-Way Split (Train / Validation / Test)
+* **Objective:** Performing a 60/20/20 Train / Validation / Test split, tuning hyperparameters on the Validation Set only, and evaluating the final model exactly once on the untouched Test Set to prevent data leakage.
+* **Key Tasks & Accomplishments:**
+  - Generated a synthetic classification dataset (1,000 samples, 10 features) with `make_classification` and a fixed `SEED = 42`.
+  - Built the **60/20/20 split** with two chained, stratified `train_test_split` calls — Train+Val (80%) vs Test (20%), then Train (60%) vs Validation (20%): 600 train / 200 validation / 200 test samples.
+  - Trained a `DecisionTreeClassifier` baseline on the Training Set and tuned `max_depth` in `[1, 2, 3, 5, 7, 10, 15, None]` using **only the Validation Set** — selected **`max_depth = 15`** (Validation Accuracy **0.8350**), preferring the smaller depth on ties.
+  - Retrained the final model on Train + Validation and evaluated it **exactly once** on the untouched Test Set — **Final Test Accuracy 0.7950** (Precision ~0.80, Recall ~0.80, F1 ~0.79).
+  - Documented why tuning on the Test Set is dangerous: **optimization bias & test contamination**, **false optimism**, and the role of each split — Train learns weights, Validation selects hyperparameters, Test verifies once.
+* **Tools used:** `scikit-learn` (`make_classification`, `train_test_split`, `DecisionTreeClassifier`, `accuracy_score`, `classification_report`), NumPy, Pandas.
+
+---
+
 ## 🛠️ Tech Stack & Tools
 
 * **Language:** Python 3.10+
-* **Libraries:** NumPy, Pandas, Matplotlib, Jupyter
+* **Libraries:** NumPy, Pandas, Matplotlib, Seaborn, scikit-learn, Jupyter
 * **Environment:** VS Code, Windows PowerShell / Command Prompt, Git & GitHub
 
 ---
