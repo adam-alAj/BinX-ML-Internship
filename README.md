@@ -276,12 +276,12 @@ BinX_ML_Internship/
 * **Objective:** Obtaining an unbiased, reliable performance estimate by evaluating a classification model with 5-Fold Cross-Validation and comparing it against a single train/validation split.
 * **Key Tasks & Accomplishments:**
   - Generated a synthetic customer-churn classification dataset (1,000 samples, 10 features, 80% Non-Churn / 20% Churn) with `make_classification` and a fixed `SEED = 42`.
-  - Built a **leak-free pipeline** — `make_pipeline(StandardScaler(), LogisticRegression(random_state=SEED))` — and evaluated it with `cross_val_score` using 5-Fold `StratifiedKFold(n_splits=5, shuffle=True, random_state=SEED)` and the `f1_weighted` metric.
+  - Performed **leak-free 5-Fold Cross-Validation** manually — fitting `StandardScaler()` on each training fold only, then `LogisticRegression(random_state=SEED)` — over 5-Fold `StratifiedKFold(n_splits=5, shuffle=True, random_state=SEED)` with the weighted F1 metric (no `Pipeline`).
   - Reported per-fold scores (0.8543, 0.8268, 0.8729, 0.8333, 0.8638) and the **final estimate: Mean F1 0.8502 ± Std 0.0176** — the small standard deviation confirms the model is stable across all folds.
   - Compared the CV mean against a single stratified 80/20 split — **Single-Split F1 0.8227** vs. **CV Mean 0.8502** (difference −0.0275): the single split was slightly pessimistic because that particular 20% hold-out was harder than average, while cross-validation uses every sample for validation exactly once.
   - Visualized the comparison — fold scores vs. CV mean vs. single-split F1 — with Matplotlib.
   - Verified that `scikit-learn` auto-applies `StratifiedKFold` for classification and justified why it matters: plain `KFold` on the imbalanced 80/20 data could produce folds with 5% or 35% minority samples, biasing evaluation or making F1 computation invalid; `StratifiedKFold` preserves the exact class ratio in every fold.
-* **Tools used:** `scikit-learn` (`make_classification`, `cross_val_score`, `StratifiedKFold`, `KFold`, `train_test_split`, `make_pipeline`, `StandardScaler`, `LogisticRegression`, `f1_score`), NumPy, Pandas, Matplotlib.
+* **Tools used:** `scikit-learn` (`make_classification`, `train_test_split`, `StratifiedKFold`, `KFold`, `StandardScaler`, `LogisticRegression`, `f1_score`), NumPy, Pandas, Matplotlib.
 
 ---
 
