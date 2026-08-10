@@ -10,3 +10,6 @@
 [submodule "BinX_Week_04"]
 	path = BinX_Week_04
 	url = https://github.com/adam-alAj/BinX_Week_04.git
+[submodule "Cardiac_Patient_Monitoring_System_Project"]
+	path = Cardiac_Patient_Monitoring_System_Project
+	url = https://github.com/adam-alAj/Cardiac_Patient_Monitoring_System_Project.git
