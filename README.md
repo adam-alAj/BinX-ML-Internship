@@ -49,7 +49,8 @@ BinX_ML_Internship/
 │   └── Day5-mini-project/             # End-to-End Titanic Survival Prediction
 ├── BinX_Week_04/                      # Week 4: Evaluation, Tuning & Pipelines (In Progress)
 │   ├── Day1/                          # Three-Way Split (Train / Validation / Test)
-│   └── Day2/                          # Cross-Validating a Model (5-Fold CV)
+│   ├── Day2/                          # Cross-Validating a Model (5-Fold CV)
+│   └── Day3/                          # Diagnosing & Fixing Model Fit (Bias–Variance)
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -282,6 +283,16 @@ BinX_ML_Internship/
   - Visualized the comparison — fold scores vs. CV mean vs. single-split F1 — with Matplotlib.
   - Verified that `scikit-learn` auto-applies `StratifiedKFold` for classification and justified why it matters: plain `KFold` on the imbalanced 80/20 data could produce folds with 5% or 35% minority samples, biasing evaluation or making F1 computation invalid; `StratifiedKFold` preserves the exact class ratio in every fold.
 * **Tools used:** `scikit-learn` (`make_classification`, `train_test_split`, `StratifiedKFold`, `KFold`, `StandardScaler`, `LogisticRegression`, `f1_score`), NumPy, Pandas, Matplotlib.
+
+#### ✅ Day 3: Diagnosing & Fixing Model Fit (Bias–Variance Tradeoff)
+* **Objective:** Making the bias–variance tradeoff tangible by deliberately constructing three Decision Tree states — overfit (high variance), underfit (high bias), and regularized (balanced) — and using the Train-vs-Validation gap to diagnose and fix model fit.
+* **Key Tasks & Accomplishments:**
+  - Generated a noisy synthetic classification dataset (1,000 samples, 20 features, 8 informative, 4 redundant, `n_clusters_per_class=2`, `flip_y=0.15` noise) with `make_classification` and a fixed `SEED = 42`, split into a stratified **70/30 Train/Validation split** (700 train / 300 validation).
+  - **Deliberately overfit** an unconstrained `DecisionTreeClassifier(max_depth=None, min_samples_split=2)` — it memorized training noise: **Training 100.00% vs Validation 69.33%, gap 30.67%** (high variance).
+  - **Deliberately underfit** a Decision Stump (`max_depth=1`) — too simple to capture patterns: **Training 60.14% vs Validation 60.33%, gap −0.19%** (high bias).
+  - **Fixed the overfitting** with a regularized/pruned tree (`max_depth=5`, `min_samples_split=10`, `min_samples_leaf=5`): validation accuracy rose from **69.33% to 72.33%** and the train-validation gap contracted from **30.67% to 10.52%**.
+  - Documented all three states in a **summary comparison table** (configuration, train/val accuracy, gap, diagnosis) and wrote key takeaways on variance reduction and generalization.
+* **Tools used:** `scikit-learn` (`make_classification`, `train_test_split`, `DecisionTreeClassifier`, `accuracy_score`, `f1_score`), NumPy, Pandas, Matplotlib.
 
 ---
 
