@@ -50,7 +50,9 @@ BinX_ML_Internship/
 ├── BinX_Week_04/                      # Week 4: Evaluation, Tuning & Pipelines (In Progress)
 │   ├── Day1/                          # Three-Way Split (Train / Validation / Test)
 │   ├── Day2/                          # Cross-Validating a Model (5-Fold CV)
-│   └── Day3/                          # Diagnosing & Fixing Model Fit (Bias–Variance)
+│   ├── Day3/                          # Diagnosing & Fixing Model Fit (Bias–Variance)
+│   └── Day4/                          # Feature Engineering & Hyperparameter Tuning
+├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
 └── README.md                          # ← You are here
@@ -293,6 +295,30 @@ BinX_ML_Internship/
   - **Fixed the overfitting** with a regularized/pruned tree (`max_depth=5`, `min_samples_split=10`, `min_samples_leaf=5`): validation accuracy rose from **69.33% to 72.33%** and the train-validation gap contracted from **30.67% to 10.52%**.
   - Documented all three states in a **summary comparison table** (configuration, train/val accuracy, gap, diagnosis) and wrote key takeaways on variance reduction and generalization.
 * **Tools used:** `scikit-learn` (`make_classification`, `train_test_split`, `DecisionTreeClassifier`, `accuracy_score`, `f1_score`), NumPy, Pandas, Matplotlib.
+
+#### ✅ Day 4: Feature Engineering & Hyperparameter Tuning
+* **Objective:** Boosting model performance by engineering two domain-relevant features (with mathematical justification) and systematically tuning a Random Forest Classifier with `GridSearchCV` under 5-Fold Stratified Cross-Validation — benchmarking the tuned model against the untuned Week 3 baseline.
+* **Key Tasks & Accomplishments:**
+  - Generated a synthetic telecom-churn/credit-risk dataset (1,000 samples, 6 features, 65% / 35% classes, `SEED = 42`) with `make_classification`, renamed columns into domain-meaningful features (`Monthly_Charges`, `Total_Tenure_Months`, `Support_Calls`, `Usage_GB`, `Payment_Delay_Days`, `Age`), and scaled values into realistic ranges. Target: **Churn**.
+  - **Engineered two features (6 → 8):** `Total_Estimated_Spend` (`Monthly_Charges × Total_Tenure_Months`) — a Customer Lifetime Value metric; `Support_Calls_Per_Tenure_Month` (`Support_Calls / Total_Tenure_Months`) — a "Frustration Density Index" — each justified with its domain/mathematical rationale. Stratified 80/20 split (800 train / 200 test).
+  - Established the **untuned baseline** `RandomForestClassifier(random_state=42)` on raw features — **Mean F1 0.8830 ± 0.0366** (5-Fold Stratified CV).
+  - Ran **`GridSearchCV`** over `n_estimators [50, 100, 200]`, `max_depth [None, 5, 10]`, `min_samples_split [2, 5, 10]`, `max_features ['sqrt', 'log2']` (54 candidates × 5 folds = 270 fits) with `StratifiedKFold(5, shuffle)`, `scoring='f1'` → **Best params `{max_depth: 10, max_features: 'log2', min_samples_split: 2, n_estimators: 50}`**, **Best CV F1 0.8941**.
+  - **Model comparison:** tuned RF (Engineered) **Test F1 0.8636** vs. untuned baseline RF (Raw) **0.8372** → **+3.16% improvement**; visualized with Matplotlib.
+  - **Insights:** `Total_Estimated_Spend` was the most influential engineered feature (Gini 11.11%, rank 5) vs. `Support_Calls_Per_Tenure_Month` (2.82%, rank 7); strongest raw predictors were Age (23.83%), Monthly_Charges (22.04%), Tenure (19.34%), Usage_GB (13.41%). `max_depth=10` + `max_features='log2'` reduced overfitting vs. the default baseline.
+* **Tools used:** `scikit-learn` (`make_classification`, `train_test_split`, `RandomForestClassifier`, `GridSearchCV`, `StratifiedKFold`, `cross_val_score`, `f1_score`, `accuracy_score`, `classification_report`), NumPy, Pandas, Matplotlib, Seaborn.
+
+---
+
+### 📊 Individual Project: Cardiac Patient Monitoring System (In Progress)
+
+An **individual 14-day AI/ML capstone project** that consolidates the entire training track — Python, NumPy, Pandas, Matplotlib, statistics & probability, EDA, supervised learning, model evaluation, feature engineering, Scikit-learn Pipelines, clustering, and PCA — into a single notebook-first, reproducible analysis. It follows the 10-phase plan in [`PHASES.md`](./Cardiac_Patient_Monitoring_System_Project/PHASES.md) (milestones M1–M7) with strict quality gates.
+
+* **Dataset:** UCI Heart Disease — Cleveland Database (303 patients, 13 features, DOI 10.24432/C52P4X), retrieved programmatically via `ucimlrepo` (ID 45).
+* **Task:** Binary classification of heart-disease presence — the raw 5-class target `num` is binarized into `target` (0 = absence, 1 = presence; 54% / 46% close-to-balanced).
+* **Progress:** ✅ **Phase 1 (M1) — Environment + Dataset** (loading, inspection, data dictionary, stage-1 snapshot) and ✅ **Phase 2 — Data Cleaning & Data Quality** (missing-value strategy, duplicates/invalid-value checks, IQR outlier screening, encoding plan, stage-2 checkpoint, written quality report) are complete. ⏳ **Next: Phase 3 — EDA + Statistics + Visualization (M2).**
+* **Key rules:** raw data is never modified; imputation/encoding/scaling are fit on training data only inside a leakage-free `ColumnTransformer`/`Pipeline`; educational analysis only — **not a clinical system**.
+* **Planned models & evaluation:** `LogisticRegression` baseline + a second comparison classifier, 5-Fold Stratified CV, confusion matrices, Accuracy/Precision/Recall/F1/ROC-AUC, feature engineering, a reusable Scikit-learn Pipeline, and K-Means clustering + PCA with interpretation.
+* **See also:** [`Cardiac_Patient_Monitoring_System_Project/README.md`](./Cardiac_Patient_Monitoring_System_Project/README.md) — full project documentation, structure, and progress tracker.
 
 ---
 
