@@ -18,7 +18,7 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 The **BinX Tech AI & ML Internship Program** is an intensive, practical training program designed to build industry-ready skills in Artificial Intelligence, Machine Learning, and Data Science.
 
-* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (In Progress)
+* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅)
 * **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, Statistical Analysis with Real Datasets, and scikit-learn Machine Learning Workflows.
 * **Core Principle:** Professional, reproducible Jupyter Notebook workflows fully documented with Markdown narratives and pushed regularly via Git/GitHub.
 
@@ -47,11 +47,12 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Logistic Regression Classifier
 │   ├── Day4/                          # Model Comparison & Feature Importance
 │   └── Day5-mini-project/             # End-to-End Titanic Survival Prediction
-├── BinX_Week_04/                      # Week 4: Evaluation, Tuning & Pipelines (In Progress)
+├── BinX_Week_04/                      # Week 4: Evaluation, Tuning & Pipelines (Completed ✅)
 │   ├── Day1/                          # Three-Way Split (Train / Validation / Test)
 │   ├── Day2/                          # Cross-Validating a Model (5-Fold CV)
 │   ├── Day3/                          # Diagnosing & Fixing Model Fit (Bias–Variance)
-│   └── Day4/                          # Feature Engineering & Hyperparameter Tuning
+│   ├── Day4/                          # Feature Engineering & Hyperparameter Tuning
+│   └── Day5-mini-project/             # Tuned End-to-End Leakage-Free ML Pipeline
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -263,7 +264,7 @@ BinX_ML_Internship/
 
 ---
 
-### 📅 Week 4: Evaluation, Tuning & Pipelines (In Progress)
+### 📅 Week 4: Evaluation, Tuning & Pipelines (Completed ✅)
 
 #### ✅ Day 1: Building a Three-Way Split (Train / Validation / Test)
 * **Objective:** Performing a 60/20/20 Train / Validation / Test split, tuning hyperparameters on the Validation Set only, and evaluating the final model exactly once on the untouched Test Set to prevent data leakage.
@@ -306,6 +307,16 @@ BinX_ML_Internship/
   - **Model comparison:** tuned RF (Engineered) **Test F1 0.8636** vs. untuned baseline RF (Raw) **0.8372** → **+3.16% improvement**; visualized with Matplotlib.
   - **Insights:** `Total_Estimated_Spend` was the most influential engineered feature (Gini 11.11%, rank 5) vs. `Support_Calls_Per_Tenure_Month` (2.82%, rank 7); strongest raw predictors were Age (23.83%), Monthly_Charges (22.04%), Tenure (19.34%), Usage_GB (13.41%). `max_depth=10` + `max_features='log2'` reduced overfitting vs. the default baseline.
 * **Tools used:** `scikit-learn` (`make_classification`, `train_test_split`, `RandomForestClassifier`, `GridSearchCV`, `StratifiedKFold`, `cross_val_score`, `f1_score`, `accuracy_score`, `classification_report`), NumPy, Pandas, Matplotlib, Seaborn.
+
+#### ✅ Day 5: Tuned End-to-End Leakage-Free ML Pipeline (Mini-Project)
+* **Objective:** Building a complete, end-to-end, leakage-free Machine Learning pipeline for customer-churn prediction — integrating feature engineering, preprocessing, and a classifier into one `Pipeline`, and tuning the entire pipeline with `GridSearchCV` under strict 5-Fold Stratified Cross-Validation.
+* **Key Tasks & Accomplishments:**
+  - Generated a synthetic **Churn / Retention dataset** (1,000 samples, 5 features — `Total_Tenure_Months`, `Monthly_Charges`, `Support_Calls`, `Contract_Type`, `Payment_Method`) with a `Churn` target derived from realistic interactions and binarized at the 65th percentile (65.2% Retained / 34.8% Churned); performed a **strict stratified 80/20 split** (800 train / 200 test) before any preprocessing.
+  - Wrapped custom feature engineering in a **`FunctionTransformer`** inside the pipeline — `Support_Calls_Per_Tenure_Month` ("Frustration Density Index") and `High_Value_Customer` (`Monthly_Charges > $75` flag) — and preprocessed mixed types with a **`ColumnTransformer`** (`StandardScaler` for numerics, `OneHotEncoder(handle_unknown='ignore')` for categoricals).
+  - Tuned the **entire end-to-end pipeline** with **`GridSearchCV`** using `classifier__`-prefixed parameters (`n_estimators [50, 100, 200]`, `max_depth [3, 5, 10, None]`, `min_samples_split [2, 5, 10]` — 36 candidates × 5 folds = 180 fits) over 5-Fold `StratifiedKFold` with F1 scoring → **Best CV F1 0.9945** at `{max_depth: 5, min_samples_split: 5, n_estimators: 200}`.
+  - Evaluated the tuned pipeline **exactly once** on the untouched test set: **Test Accuracy 0.975 / Test F1 0.9645** vs. Dummy Baseline (0.650 / 0.0000) and Untuned Default Pipeline (0.965 / 0.9504); visualized the confusion-matrix heatmap and printed the classification report (Churned: Precision 0.96 / Recall 0.97 / F1 0.96).
+  - **Key findings:** encapsulating scaling/encoding/feature creation inside the `Pipeline` guaranteed zero data leakage; the tuned pipeline outperformed both baselines; `max_depth=5` controlled tree depth and prevented overfitting.
+* **Tools used:** `scikit-learn` (`train_test_split`, `ColumnTransformer`, `Pipeline`, `FunctionTransformer`, `StandardScaler`, `OneHotEncoder`, `RandomForestClassifier`, `DummyClassifier`, `GridSearchCV`, `StratifiedKFold`, `accuracy_score`, `f1_score`, `classification_report`, `confusion_matrix`), NumPy, Pandas, Matplotlib, Seaborn.
 
 ---
 
