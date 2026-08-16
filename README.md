@@ -18,7 +18,7 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 The **BinX Tech AI & ML Internship Program** is an intensive, practical training program designed to build industry-ready skills in Artificial Intelligence, Machine Learning, and Data Science.
 
-* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅)
+* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress)
 * **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, Statistical Analysis with Real Datasets, and scikit-learn Machine Learning Workflows.
 * **Core Principle:** Professional, reproducible Jupyter Notebook workflows fully documented with Markdown narratives and pushed regularly via Git/GitHub.
 
@@ -53,6 +53,8 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Diagnosing & Fixing Model Fit (Bias–Variance)
 │   ├── Day4/                          # Feature Engineering & Hyperparameter Tuning
 │   └── Day5-mini-project/             # Tuned End-to-End Leakage-Free ML Pipeline
+├── BinX_Week_05/                      # Week 5: Unsupervised Learning — Clustering (In Progress)
+│   └── Day1/                          # K-Means Clustering & K Selection
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -317,6 +319,20 @@ BinX_ML_Internship/
   - Evaluated the tuned pipeline **exactly once** on the untouched test set: **Test Accuracy 0.975 / Test F1 0.9645** vs. Dummy Baseline (0.650 / 0.0000) and Untuned Default Pipeline (0.965 / 0.9504); visualized the confusion-matrix heatmap and printed the classification report (Churned: Precision 0.96 / Recall 0.97 / F1 0.96).
   - **Key findings:** encapsulating scaling/encoding/feature creation inside the `Pipeline` guaranteed zero data leakage; the tuned pipeline outperformed both baselines; `max_depth=5` controlled tree depth and prevented overfitting.
 * **Tools used:** `scikit-learn` (`train_test_split`, `ColumnTransformer`, `Pipeline`, `FunctionTransformer`, `StandardScaler`, `OneHotEncoder`, `RandomForestClassifier`, `DummyClassifier`, `GridSearchCV`, `StratifiedKFold`, `accuracy_score`, `f1_score`, `classification_report`, `confusion_matrix`), NumPy, Pandas, Matplotlib, Seaborn.
+
+---
+
+### 📅 Week 5: Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress)
+
+#### ✅ Day 1: K-Means Clustering & K Selection (Elbow + Silhouette)
+* **Objective:** Implementing the first unsupervised learning lab — clustering unlabeled data with K-Means, selecting the optimal number of clusters via the Elbow Method and Silhouette Score, and interpreting the discovered passenger segments.
+* **Key Tasks & Accomplishments:**
+  - Loaded the **Titanic** dataset (891 passengers) via `sns.load_dataset('titanic')` and selected five numerical features (`pclass`, `age`, `fare`, `sibsp`, `parch`); imputed missing `age`/`fare` with the median and applied `StandardScaler` so distance-based clustering is not biased by feature scale (**scaled shape 891 × 5**).
+  - Ran K-Means across `k ∈ [1, 10]` and used the **Elbow Method (inertia / WCSS)** to visually shortlist candidate cluster counts.
+  - Validated the top candidates with the **Silhouette Score** — **`k = 3` (0.4170)** vs `k = 4` (0.4136) — selecting **optimal `k = 3`** based on the highest score.
+  - Trained the final `KMeans` (`k-means++`, `n_init=10`, `SEED=42`), visualized clusters in 2D (**`age` vs `fare`**) with `seaborn` and overlaid the **unscaled centroids** (inverse-transformed) as red stars.
+  - Profiled **three passenger archetypes** from the unscaled centroid statistics: **Cluster 0 — Family Groups & Dependents** (high `sibsp` 2.34 / `parch` 1.94, ~15 yrs), **Cluster 1 — Standard/Economy Solo Travelers** (`pclass` ~2.77, `fare` $12.19, ~28 yrs), and **Cluster 2 — High-Socioeconomic/First Class** (`pclass` ~1.14, `fare` $71.27, ~39.5 yrs).
+* **Tools used:** `scikit-learn` (`StandardScaler`, `KMeans`, `silhouette_score`), NumPy, Pandas, Matplotlib, Seaborn (`sns.load_dataset`, `scatterplot`).
 
 ---
 
