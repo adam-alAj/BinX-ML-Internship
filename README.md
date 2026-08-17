@@ -54,7 +54,8 @@ BinX_ML_Internship/
 │   ├── Day4/                          # Feature Engineering & Hyperparameter Tuning
 │   └── Day5-mini-project/             # Tuned End-to-End Leakage-Free ML Pipeline
 ├── BinX_Week_05/                      # Week 5: Unsupervised Learning — Clustering (In Progress)
-│   └── Day1/                          # K-Means Clustering & K Selection
+│   ├── Day1/                          # K-Means Clustering & K Selection
+│   └── Day2/                          # Comparing Clustering Methods (K-Means, DBSCAN, Hierarchical)
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -333,6 +334,16 @@ BinX_ML_Internship/
   - Trained the final `KMeans` (`k-means++`, `n_init=10`, `SEED=42`), visualized clusters in 2D (**`age` vs `fare`**) with `seaborn` and overlaid the **unscaled centroids** (inverse-transformed) as red stars.
   - Profiled **three passenger archetypes** from the unscaled centroid statistics: **Cluster 0 — Family Groups & Dependents** (high `sibsp` 2.34 / `parch` 1.94, ~15 yrs), **Cluster 1 — Standard/Economy Solo Travelers** (`pclass` ~2.77, `fare` $12.19, ~28 yrs), and **Cluster 2 — High-Socioeconomic/First Class** (`pclass` ~1.14, `fare` $71.27, ~39.5 yrs).
 * **Tools used:** `scikit-learn` (`StandardScaler`, `KMeans`, `silhouette_score`), NumPy, Pandas, Matplotlib, Seaborn (`sns.load_dataset`, `scatterplot`).
+
+#### ✅ Day 2: Comparing Clustering Methods (K-Means, DBSCAN, Hierarchical)
+* **Objective:** Extending the K-Means clustering workflow from Day 1 by comparing three unsupervised clustering methods on the same Titanic dataset and feature representation to understand how different algorithms respond to the same data structure.
+* **Key Tasks & Accomplishments:**
+  - Reused the **Day 1 dataset and preprocessing pipeline** for a fair comparison — same Titanic dataset (891 passengers), same five numerical features (`pclass`, `age`, `fare`, `sibsp`, `parch`), same median imputation for missing `age`/`fare`, and same `StandardScaler` application (**scaled shape 891 × 5**).
+  - Recreated the **K-Means baseline** from Day 1 (`k = 3`, `random_state = 42`, `n_init = 10`, `init = "k-means++"`) with Silhouette Score **0.4170** as the reference point.
+  - Implemented **DBSCAN** (Density-Based Spatial Clustering of Applications with Noise) with baseline parameters (`eps = 0.5`, `min_samples = 5`), identifying **18 clusters** and **176 noise points** — demonstrating DBSCAN's ability to discover arbitrary-shaped clusters and explicitly label sparse observations as noise.
+  - Implemented **Hierarchical Clustering** using **Ward linkage**, generated a linkage matrix and truncated dendrogram to visualize how observations are progressively merged into larger clusters, with a cut height selected based on visible separation between major merges.
+  - Compared the three methods on **cluster shape assumptions** (K-Means assumes spherical, DBSCAN finds arbitrary shapes, Hierarchical builds hierarchy), **noise handling** (K-Means assigns all observations, DBSCAN identifies noise, Hierarchical allows post-hierarchy selection), and **cluster count** (K-Means requires pre-specification, DBSCAN discovers automatically, Hierarchical allows post-selection).
+* **Tools used:** `scikit-learn` (`StandardScaler`, `KMeans`, `DBSCAN`, `silhouette_score`), `scipy.cluster.hierarchy` (`linkage`, `dendrogram`, `fcluster`), NumPy, Pandas, Matplotlib, Seaborn.
 
 ---
 
