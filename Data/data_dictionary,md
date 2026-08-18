@@ -1,0 +1,52 @@
+# Data Dictionary — `heart_disease_processed.csv`
+
+**Source file:** `data/processed/heart_disease_processed.csv`
+**Produced by:** `data/processing/heart_disease_processing.ipynb`
+**Source data:** merged UCI Heart Disease records from four sites — Cleveland (USA), Hungary, Switzerland, and VA Long Beach (USA)
+**Rows:** 918 (one row per patient record)
+**Columns:** 14
+**Missing values:** none — all columns are fully populated after cleaning/imputation
+**Duplicate rows:** none
+
+---
+
+## Column Reference
+
+| # | Column | Type | Description | Valid Values / Range | Missing in Raw Data | Cleaning Applied |
+|---|--------|------|--------------|------------------------|----------------------|-------------------|
+| 1 | `country` | string | Site/country where the patient record was collected | `Cleveland (USA)`, `Hungary`, `Switzerland`, `VA Long Beach (USA)` | 0% | none needed |
+| 2 | `age` | float | Patient age in years | 0–120 | 0% | out-of-range values would have been set to missing (none found) |
+| 3 | `sex` | int | Patient biological sex | `0` = female, `1` = male | 0% | none needed |
+| 4 | `cp` | int | Chest pain type | `1` = typical angina, `2` = atypical angina, `3` = non-anginal pain, `4` = asymptomatic | 0% | none needed |
+| 5 | `trestbps` | float | Resting blood pressure on admission to hospital (mm Hg) | > 0, typically 80–200 | 6.4% + 1 illogical (`0`) | `0` treated as invalid → set to missing, then imputed with the per-country median |
+| 6 | `chol` | float | Serum cholesterol (mg/dl) | > 0, typically 100–600 | 3.3% + 172 illogical (`0`) | `0` treated as invalid (a living patient cannot have 0 cholesterol — mainly a Switzerland/VA recording artifact) → set to missing, then imputed with the per-country median |
+| 7 | `fbs` | int | Fasting blood sugar > 120 mg/dl | `0` = false, `1` = true | 9.8% | imputed with the per-country mode |
+| 8 | `restecg` | int | Resting electrocardiographic results | `0` = normal, `1` = ST-T wave abnormality, `2` = probable/definite left ventricular hypertrophy | 0.2% | imputed with the per-country mode |
+| 9 | `thalach` | float | Maximum heart rate achieved during exercise test | typically 60–220 | 6.0% | imputed with the per-country median |
+| 10 | `exang` | int | Exercise-induced angina | `0` = no, `1` = yes | 6.0% | imputed with the per-country mode |
+| 11 | `oldpeak` | float | ST depression induced by exercise relative to rest | ≥ 0, typically 0–6.2 | 6.7% + 12 illogical (negative values) | negative values treated as data-entry errors → set to missing, then imputed with the per-country median |
+| 12 | `slope` | int | Slope of the peak exercise ST segment | `1` = upsloping, `2` = flat, `3` = downsloping | 33.6% | imputed with the per-country mode (below the 40% drop threshold, so kept) |
+| 13 | `num` | int | Original diagnosis label — angiographic disease severity | `0` = no disease, `1`–`4` = increasing severity of disease presence | 0% | none needed |
+| 14 | `target` | int | Simplified binary diagnosis label derived from `num` | `0` = no disease (`num == 0`), `1` = disease present (`num` > 0) | 0% (derived column) | none needed |
+
+---
+
+## Columns Dropped During Processing
+
+Dropped because they were missing in more than 40% of raw rows, mostly outside the Cleveland site — imputing them at that level of sparsity would have added noise rather than signal.
+
+| Column | Description | Missing % in Raw Merged Data |
+|--------|--------------|-------------------------------|
+| `ca` | Number of major vessels (0–3) colored by fluoroscopy | 66.4% |
+| `thal` | Thalassemia test result (`3` = normal, `6` = fixed defect, `7` = reversible defect) | 52.8% |
+
+If these are needed for a specific analysis, they're still available in `data/raw/heart_disease_merged.csv`, uncleaned.
+
+---
+
+## Notes for Downstream Use
+
+- **Imputation is per-country**, not global — `trestbps`, `chol`, `thalach`, and `oldpeak` were filled with each site's own median, and `fbs`, `restecg`, `exang`, and `slope` with each site's own mode, since measurement practices and baseline patient populations differ across the four collection sites. This means imputed values won't all be identical across the dataset the way a single global fill value would be.
+- **`num` vs. `target`**: use `num` for multi-class severity modeling, `target` for binary presence/absence classification. Most published work on this dataset uses `target`.
+- **Class balance** and **per-country distributions** were not addressed in this notebook — check both before modeling, since the four sites contribute unequal row counts (303 / 293 / 199 / 123) and disease prevalence is known to differ by site.
+- This file documents `heart_disease_processed.csv` only. The raw merged file (`data/raw/heart_disease_merged.csv`) has 2 additional columns (`ca`, `thal`), contains missing values (`NaN`), and has not had illogical values or duplicates removed.

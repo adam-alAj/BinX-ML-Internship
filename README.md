@@ -18,7 +18,7 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 The **BinX Tech AI & ML Internship Program** is an intensive, practical training program designed to build industry-ready skills in Artificial Intelligence, Machine Learning, and Data Science.
 
-* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress)
+* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress — Day 3 of 5)
 * **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, Statistical Analysis with Real Datasets, and scikit-learn Machine Learning Workflows.
 * **Core Principle:** Professional, reproducible Jupyter Notebook workflows fully documented with Markdown narratives and pushed regularly via Git/GitHub.
 
@@ -53,9 +53,10 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Diagnosing & Fixing Model Fit (Bias–Variance)
 │   ├── Day4/                          # Feature Engineering & Hyperparameter Tuning
 │   └── Day5-mini-project/             # Tuned End-to-End Leakage-Free ML Pipeline
-├── BinX_Week_05/                      # Week 5: Unsupervised Learning — Clustering (In Progress)
+├── BinX_Week_05/                      # Week 5: Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress)
 │   ├── Day1/                          # K-Means Clustering & K Selection
-│   └── Day2/                          # Comparing Clustering Methods (K-Means, DBSCAN, Hierarchical)
+│   ├── Day2/                          # Comparing Clustering Methods (K-Means, DBSCAN, Hierarchical)
+│   └── Day3/                          # Dimensionality Reduction with PCA
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -344,6 +345,16 @@ BinX_ML_Internship/
   - Implemented **Hierarchical Clustering** using **Ward linkage**, generated a linkage matrix and truncated dendrogram to visualize how observations are progressively merged into larger clusters, with a cut height selected based on visible separation between major merges.
   - Compared the three methods on **cluster shape assumptions** (K-Means assumes spherical, DBSCAN finds arbitrary shapes, Hierarchical builds hierarchy), **noise handling** (K-Means assigns all observations, DBSCAN identifies noise, Hierarchical allows post-hierarchy selection), and **cluster count** (K-Means requires pre-specification, DBSCAN discovers automatically, Hierarchical allows post-selection).
 * **Tools used:** `scikit-learn` (`StandardScaler`, `KMeans`, `DBSCAN`, `silhouette_score`), `scipy.cluster.hierarchy` (`linkage`, `dendrogram`, `fcluster`), NumPy, Pandas, Matplotlib, Seaborn.
+
+#### ✅ Day 3: Dimensionality Reduction with PCA
+* **Objective:** Applying Principal Component Analysis (PCA) to the processed Heart Disease dataset to reduce dimensionality from 11 clinical features while preserving as much variance as possible, and visualizing the 2D PCA space colored by the known disease target.
+* **Key Tasks & Accomplishments:**
+  - Loaded the processed **Heart Disease** dataset (918 patients, 14 columns) and selected **11 clinical features** (`age`, `sex`, `cp`, `trestbps`, `chol`, `fbs`, `restecg`, `thalach`, `exang`, `oldpeak`, `slope`) — excluding `country`, `num`, and `target` from the PCA input.
+  - Applied `StandardScaler` (μ ≈ 0, σ ≈ 1) to all 11 features and verified standardization — essential because PCA is variance-based and features with larger scales would otherwise dominate.
+  - Fitted PCA with all 11 components, plotted cumulative explained variance with a **95% reference threshold**, and selected **10 components** as the minimum required to retain ≥95% of variance — actual retained: **96.27%**, lost: **3.73%**.
+  - Transformed the dataset from **(918, 11) → (918, 10)** with minimal information loss. Separately fitted a **2-component PCA** for visualization — PC1 (23.18%) + PC2 (12.66%) = **35.84%** combined variance — and created a 2D scatter plot colored by the heart-disease target.
+  - Inspected PCA loadings: **PC1** driven by exercise-response features (`exang` 0.4491, `thalach` 0.4179, `oldpeak` 0.3911, `age` 0.3672), **PC2** driven by resting-cardiac-metabolic features (`restecg` 0.5010, `trestbps` 0.3973, `fbs` 0.3951). Documented the trade-off: PCA preserves variance but costs direct interpretability.
+* **Tools used:** `scikit-learn` (`StandardScaler`, `PCA`), NumPy, Pandas, Matplotlib, Seaborn.
 
 ---
 
