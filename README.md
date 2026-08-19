@@ -18,7 +18,7 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 The **BinX Tech AI & ML Internship Program** is an intensive, practical training program designed to build industry-ready skills in Artificial Intelligence, Machine Learning, and Data Science.
 
-* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress — Day 3 of 5)
+* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress — Day 4 of 5)
 * **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, Statistical Analysis with Real Datasets, and scikit-learn Machine Learning Workflows.
 * **Core Principle:** Professional, reproducible Jupyter Notebook workflows fully documented with Markdown narratives and pushed regularly via Git/GitHub.
 
@@ -56,7 +56,8 @@ BinX_ML_Internship/
 ├── BinX_Week_05/                      # Week 5: Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress)
 │   ├── Day1/                          # K-Means Clustering & K Selection
 │   ├── Day2/                          # Comparing Clustering Methods (K-Means, DBSCAN, Hierarchical)
-│   └── Day3/                          # Dimensionality Reduction with PCA
+│   ├── Day3/                          # Dimensionality Reduction with PCA
+│   └── Day4/                          # t-SNE Visualization & Anomaly Detection
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -355,6 +356,18 @@ BinX_ML_Internship/
   - Transformed the dataset from **(918, 11) → (918, 10)** with minimal information loss. Separately fitted a **2-component PCA** for visualization — PC1 (23.18%) + PC2 (12.66%) = **35.84%** combined variance — and created a 2D scatter plot colored by the heart-disease target.
   - Inspected PCA loadings: **PC1** driven by exercise-response features (`exang` 0.4491, `thalach` 0.4179, `oldpeak` 0.3911, `age` 0.3672), **PC2** driven by resting-cardiac-metabolic features (`restecg` 0.5010, `trestbps` 0.3973, `fbs` 0.3951). Documented the trade-off: PCA preserves variance but costs direct interpretability.
 * **Tools used:** `scikit-learn` (`StandardScaler`, `PCA`), NumPy, Pandas, Matplotlib, Seaborn.
+
+#### ✅ Day 4: t-SNE Visualization & Anomaly Detection
+* **Objective:** Applying t-SNE (t-distributed Stochastic Neighbor Embedding) for non-linear 2D visualization and Isolation Forest for anomaly detection on the processed Heart Disease dataset.
+* **Key Tasks & Accomplishments:**
+  - Loaded the processed **Heart Disease** dataset (918 patients, 14 columns) and selected **11 clinical features** (`age`, `sex`, `cp`, `trestbps`, `chol`, `fbs`, `restecg`, `thalach`, `exang`, `oldpeak`, `slope`). Applied `StandardScaler` to ensure unit variance across all features.
+  - Applied **t-SNE** (`n_components=2`, `random_state=42`) to project the high-dimensional standardized data into a 2D space that preserves local neighborhood structure, then visualized the result as a scatter plot colored by K-Means cluster assignments — revealing distinct sub-groups within the data that reflect non-linear relationships between clinical variables.
+  - Generated side-by-side scatter plots of PCA (`n_components=2`) and t-SNE (`n_components=2`) projections, both colored by K-Means cluster labels. **PCA** shows a broad, continuous distribution with clusters partially overlapping, while **t-SNE** successfully preserves local neighborhoods, separating patient records into more distinct clusters and sub-groups.
+  - Applied **IsolationForest** (`contamination=0.05`, `random_state=42`) to the standardized 11-feature dataset to identify anomalous patient records. Flagged approximately 5% of patient records as anomalies.
+  - Extracted two specific flagged anomaly records and compared their feature values against dataset medians to form clinical hypotheses:
+    - **Patient 1:** Flagged due to high ST-segment depression (`oldpeak = 2.3` vs median `0.7`), abnormal ST slope (`slope = 3.0` vs median `2.0`), left ventricular hypertrophy (`restecg = 2.0` vs median `0.0`), elevated resting blood pressure (`trestbps = 145.0`), and elevated fasting blood sugar (`fbs = 1.0`).
+    - **Patient 2:** Flagged due to extremely high ST depression (`oldpeak = 3.6` vs median `0.7`), downsloping ST segment (`slope = 3.0`), abnormal resting ECG (`restecg = 2.0`), in a female patient (`sex = 0.0`) with high heart rate (`thalach = 160.0`) but no exercise-induced angina (`exang = 0.0`).
+* **Tools used:** `scikit-learn` (`StandardScaler`, `TSNE`, `IsolationForest`, `KMeans`), NumPy, Pandas, Matplotlib, Seaborn.
 
 ---
 
