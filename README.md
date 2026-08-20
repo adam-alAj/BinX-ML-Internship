@@ -53,7 +53,7 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Diagnosing & Fixing Model Fit (Bias–Variance)
 │   ├── Day4/                          # Feature Engineering & Hyperparameter Tuning
 │   └── Day5-mini-project/             # Tuned End-to-End Leakage-Free ML Pipeline
-├── BinX_Week_05/                      # Week 5: Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress)
+├── BinX_Week_05/                      # Week 5: Unsupervised Learning — Clustering & Dimensionality Reduction (Completed ✅)
 │   ├── Day1/                          # K-Means Clustering & K Selection
 │   ├── Day2/                          # Comparing Clustering Methods (K-Means, DBSCAN, Hierarchical)
 │   ├── Day3/                          # Dimensionality Reduction with PCA
