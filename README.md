@@ -18,7 +18,7 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 The **BinX Tech AI & ML Internship Program** is an intensive, practical training program designed to build industry-ready skills in Artificial Intelligence, Machine Learning, and Data Science.
 
-* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress — Day 4 of 5)
+* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (Completed ✅ Days 1–4, Sprint 1 Kickoff ✅ Day 5)
 * **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, Statistical Analysis with Real Datasets, and scikit-learn Machine Learning Workflows.
 * **Core Principle:** Professional, reproducible Jupyter Notebook workflows fully documented with Markdown narratives and pushed regularly via Git/GitHub.
 
@@ -57,7 +57,8 @@ BinX_ML_Internship/
 │   ├── Day1/                          # K-Means Clustering & K Selection
 │   ├── Day2/                          # Comparing Clustering Methods (K-Means, DBSCAN, Hierarchical)
 │   ├── Day3/                          # Dimensionality Reduction with PCA
-│   └── Day4/                          # t-SNE Visualization & Anomaly Detection
+│   ├── Day4/                          # t-SNE Visualization & Anomaly Detection
+│   └── Day5-Sprint1/                  # Sprint 1: Project Kickoff & Plan (Cardiac Patient Monitoring System)
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -371,16 +372,19 @@ BinX_ML_Internship/
 
 ---
 
-### 📊 Individual Project: Cardiac Patient Monitoring System (In Progress)
+### 📊 Individual Project: Cardiac Patient Monitoring System (Sprint 1 — In Progress)
 
 An **individual 14-day AI/ML capstone project** that consolidates the entire training track — Python, NumPy, Pandas, Matplotlib, statistics & probability, EDA, supervised learning, model evaluation, feature engineering, Scikit-learn Pipelines, clustering, and PCA — into a single notebook-first, reproducible analysis. It follows the 10-phase plan in [`PHASES.md`](./Cardiac_Patient_Monitoring_System_Project/PHASES.md) (milestones M1–M7) with strict quality gates.
 
-* **Dataset:** UCI Heart Disease — Cleveland Database (303 patients, 13 features, DOI 10.24432/C52P4X), retrieved programmatically via `ucimlrepo` (ID 45).
+* **Dataset:** UCI Heart Disease — Cleveland Database (303 patients, 13 features, DOI 10.24432/C52P4X).
 * **Task:** Binary classification of heart-disease presence — the raw 5-class target `num` is binarized into `target` (0 = absence, 1 = presence; 54% / 46% close-to-balanced).
-* **Progress:** ✅ **Phase 1 (M1) — Environment + Dataset** (loading, inspection, data dictionary, stage-1 snapshot) and ✅ **Phase 2 — Data Cleaning & Data Quality** (missing-value strategy, duplicates/invalid-value checks, IQR outlier screening, encoding plan, stage-2 checkpoint, written quality report) are complete. ⏳ **Next: Phase 3 — EDA + Statistics + Visualization (M2).**
+* **Sprint 1 Progress:** ✅ **All 8 phases complete** (Phases 1–8 across 8 notebooks) — environment setup, data loading, data cleaning & quality, EDA with statistics & visualizations, baseline model (Logistic Regression), model comparison (Random Forest), cross-validation, feature engineering with leakage-free Pipeline, unsupervised analysis (K-Means + PCA), and consolidated findings with limitations.
+* **Key Results:** Random Forest selected for higher recall (0.964) — critical for medical framing where false negatives are costlier. Full metrics: Accuracy 0.902, Precision 0.844, F1 0.900, ROC-AUC 0.955.
 * **Key rules:** raw data is never modified; imputation/encoding/scaling are fit on training data only inside a leakage-free `ColumnTransformer`/`Pipeline`; educational analysis only — **not a clinical system**.
-* **Planned models & evaluation:** `LogisticRegression` baseline + a second comparison classifier, 5-Fold Stratified CV, confusion matrices, Accuracy/Precision/Recall/F1/ROC-AUC, feature engineering, a reusable Scikit-learn Pipeline, and K-Means clustering + PCA with interpretation.
-* **See also:** [`Cardiac_Patient_Monitoring_System_Project/README.md`](./Cardiac_Patient_Monitoring_System_Project/README.md) — full project documentation, structure, and progress tracker.
+* **Sprint 2:** Currently undefined and pending.
+* **See also:**
+  - [`Cardiac_Patient_Monitoring_System_Project/README.md`](./Cardiac_Patient_Monitoring_System_Project/README.md) — full project documentation, structure, and progress tracker
+  - [`BinX_Week_05/Day5-Sprint1/Project_Kickoff_Sprint1_Plan.md`](./BinX_Week_05/Day5-Sprint1/Project_Kickoff_Sprint1_Plan.md) — Sprint 1 plan with problem statement, DoD, backlog, and acceptance criteria
 
 ---
 
