@@ -18,7 +18,7 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 The **BinX Tech AI & ML Internship Program** is an intensive, practical training program designed to build industry-ready skills in Artificial Intelligence, Machine Learning, and Data Science.
 
-* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (Completed ✅ Days 1–4, Project Kickoff ✅ Day 5)
+* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (Completed ✅ Days 1–4, Project Kickoff ✅ Day 5) → Phase 3 — Deep Learning & Applied Project (In Progress 🔄)
 * **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, Statistical Analysis with Real Datasets, and scikit-learn Machine Learning Workflows.
 * **Core Principle:** Professional, reproducible Jupyter Notebook workflows fully documented with Markdown narratives and pushed regularly via Git/GitHub.
 
@@ -59,6 +59,12 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Dimensionality Reduction with PCA
 │   ├── Day4/                          # t-SNE Visualization & Anomaly Detection
 │   └── Day5-ProjectKickoff/            # Project Kickoff & Plan (Cardiac Patient Monitoring System)
+├── BinX_Week_06/                      # Week 6: Deep Learning & Applied Project — Sprint 1 (In Progress 🔄)
+│   ├── Day1/                          # Sprint 1 Kickoff & Baseline Model
+│   ├── Day2/                          # (planned)
+│   ├── Day3/                          # (planned)
+│   ├── Day4/                          # (planned)
+│   └── Day5/                          # (planned)
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -385,6 +391,33 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
 * **See also:**
   - [`Cardiac_Patient_Monitoring_System_Project/README.md`](./Cardiac_Patient_Monitoring_System_Project/README.md) — full project documentation, structure, and progress tracker
   - [`BinX_Week_05/Day5-ProjectKickoff/Project_Kickoff_Plan.md`](./BinX_Week_05/Day5-ProjectKickoff/Project_Kickoff_Plan.md) — Project plan with problem statement, DoD, backlog, and acceptance criteria
+
+---
+
+### 📅 Week 6: Deep Learning & Applied Project — Sprint 1 (In Progress 🔄)
+
+#### ✅ Day 1: Sprint 1 Kickoff & Baseline Model
+* **Objective:** Establishing a robust, reproducible machine learning baseline pipeline on the Heart Disease dataset using standard tabular modeling techniques (Logistic Regression), whose metrics every neural network developed in subsequent sprints must beat.
+* **Key Tasks & Accomplishments:**
+  - Completed Sprint 1 planning with backlog (5 tasks), acceptance criteria, and sprint timeline (Sprint Planning, Daily Stand-ups, Mentor Review, Sprint Review, Retrospective).
+  - Loaded the processed **Heart Disease** dataset (918 patients × 14 columns) and validated the schema — 13 numeric features, 1 categorical (`country`), **no missing values**.
+  - Performed comprehensive EDA: statistical summaries (mean, std, skewness, kurtosis), target distribution (55.3% positive / 44.7% negative), univariate analysis with histograms+KDE and box plots, IQR outlier detection, and Pearson correlation heatmap.
+  - Built a **leakage-free preprocessing pipeline** using `ColumnTransformer` — `SimpleImputer` + `StandardScaler` for numerics, `SimpleImputer` + `OneHotEncoder` for categoricals — fitted on training data only.
+  - Trained a **Logistic Regression** baseline classifier and evaluated on the held-out test set with **Accuracy**, **F1-Score**, and **ROC-AUC**, plus a confusion matrix heatmap.
+  - These baseline scores establish the **absolute benchmark** that every neural network architecture in subsequent sprints must outperform.
+* **Tools used:** `scikit-learn` (`LogisticRegression`, `ColumnTransformer`, `Pipeline`, `SimpleImputer`, `StandardScaler`, `OneHotEncoder`, `train_test_split`, metrics), NumPy, Pandas, Matplotlib, Seaborn.
+
+#### Day 2: Activations & Forward Pass (Neural Network Foundations)
+🔲 *Planned — not yet completed.*
+
+#### Day 3: Training Mechanics: Loss Curves, Learning Rate, Training Loop
+🔲 *Planned — not yet completed.*
+
+#### Day 4: Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
+🔲 *Planned — not yet completed.*
+
+#### Day 5: Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective
+🔲 *Planned — not yet completed.*
 
 ---
 
