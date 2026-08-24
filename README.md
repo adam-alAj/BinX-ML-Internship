@@ -10,7 +10,7 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 * **Role:** AI & Machine Learning Intern
 * **Location:** Palestine
 * **GitHub:** [@adam-alAj](https://github.com/adam-alAj)
-* **LinkedIn:** [adam-alafand](https://linkedin.com/in/adam-alafandi)
+* **LinkedIn:** [adam-alafandi](https://linkedin.com/in/adam-alafandi)
 
 ---
 
@@ -61,7 +61,7 @@ BinX_ML_Internship/
 │   └── Day5-ProjectKickoff/            # Project Kickoff & Plan (Cardiac Patient Monitoring System)
 ├── BinX_Week_06/                      # Week 6: Deep Learning & Applied Project — Sprint 1 (In Progress 🔄)
 │   ├── Day1/                          # Sprint 1 Kickoff & Baseline Model
-│   ├── Day2/                          # (planned)
+│   ├── Day2/                          # Activations & Forward Pass (Neural Network Foundations)
 │   ├── Day3/                          # (planned)
 │   ├── Day4/                          # (planned)
 │   └── Day5/                          # (planned)
@@ -407,8 +407,18 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - These baseline scores establish the **absolute benchmark** that every neural network architecture in subsequent sprints must outperform.
 * **Tools used:** `scikit-learn` (`LogisticRegression`, `ColumnTransformer`, `Pipeline`, `SimpleImputer`, `StandardScaler`, `OneHotEncoder`, `train_test_split`, metrics), NumPy, Pandas, Matplotlib, Seaborn.
 
-#### Day 2: Activations & Forward Pass (Neural Network Foundations)
-🔲 *Planned — not yet completed.*
+#### ✅ Day 2: Activations & Forward Pass (Neural Network Foundations)
+* **Objective:** Understanding why non-linear activation functions are essential for deep networks, and implementing a complete forward pass from scratch in NumPy to compute predictions and loss for binary classification.
+* **Key Tasks & Accomplishments:**
+  - Plotted and compared four activation functions (**ReLU, Sigmoid, Tanh, Softmax**) with their derivatives over $z \in [-6, 6]$, explaining each function's output range, typical use case, and gradient behavior.
+  - Analyzed key properties: ReLU's sparsity and "dying ReLU" problem, Sigmoid's gradient vanishing for large $|z|$, Tanh's zero-centered output, and Softmax's probability normalization.
+  - Selected **Sigmoid output activation + Binary Cross-Entropy (BCE) loss** for the binary heart-disease classification task, with mathematical justification — the gradient simplifies to $\frac{\partial \mathcal{L}}{\partial z} = \hat{y} - y$.
+  - Implemented a **complete forward pass from scratch in NumPy** using a 2-layer neural network: Input (4 features) → Hidden Layer (3 neurons, ReLU) → Output (1 neuron, Sigmoid) → BCE Loss.
+  - Tracked tensor shapes at every computation step: $X (1,4) \to Z^{[1]} (1,3) \to A^{[1]} (1,3) \to Z^{[2]} (1,1) \to \hat{y} (1,1)$.
+  - Initialized weights with scaled random values (`np.random.randn * 0.5`) and biases to zeros.
+  - Computed the BCE loss with numerical stability via clipping (`epsilon = 1e-15`) and verified it analytically using the single-sample formula.
+  - **Key Insight:** Activations are not optional — without them, depth is meaningless. ReLU is the default for hidden layers. Shape tracking is essential — most forward-pass bugs are shape mismatches.
+* **Tools used:** NumPy (`np.random`, `np.dot`, `np.clip`, `np.log`, `np.isclose`), Matplotlib, Seaborn (activation function plots).
 
 #### Day 3: Training Mechanics: Loss Curves, Learning Rate, Training Loop
 🔲 *Planned — not yet completed.*
