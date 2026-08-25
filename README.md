@@ -62,7 +62,7 @@ BinX_ML_Internship/
 ├── BinX_Week_06/                      # Week 6: Deep Learning & Applied Project — Sprint 1 (In Progress 🔄)
 │   ├── Day1/                          # Sprint 1 Kickoff & Baseline Model
 │   ├── Day2/                          # Activations & Forward Pass (Neural Network Foundations)
-│   ├── Day3/                          # (planned)
+│   ├── Day3/                          # Understanding Training + Mentor Review
 │   ├── Day4/                          # (planned)
 │   └── Day5/                          # (planned)
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
@@ -420,8 +420,14 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - **Key Insight:** Activations are not optional — without them, depth is meaningless. ReLU is the default for hidden layers. Shape tracking is essential — most forward-pass bugs are shape mismatches.
 * **Tools used:** NumPy (`np.random`, `np.dot`, `np.clip`, `np.log`, `np.isclose`), Matplotlib, Seaborn (activation function plots).
 
-#### Day 3: Training Mechanics: Loss Curves, Learning Rate, Training Loop
-🔲 *Planned — not yet completed.*
+#### ✅ Day 3: Hands-On Lab: Understanding Training + Mentor Review
+* **Objective:** Describing the four-step training loop, experimenting with learning rates to observe their effect on loss curves, and implementing backpropagation from scratch using the chain rule.
+* **Key Tasks & Accomplishments:**
+  - Described the four-step training loop: forward pass → compute loss → backpropagation → update weights.
+  - Trained a 2-layer neural network at three learning rates (0.5, 0.0001, 0.01) and plotted loss curves to visualize convergence behavior.
+  - Implemented backpropagation from scratch in NumPy for the 2-layer network, computing gradients for all weights and biases.
+  - Explained the chain rule and its role in backpropagation for decomposing complex gradients into local derivatives.
+* **Tools used:** NumPy, Matplotlib.
 
 #### Day 4: Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
 🔲 *Planned — not yet completed.*
