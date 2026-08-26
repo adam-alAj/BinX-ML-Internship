@@ -63,7 +63,7 @@ BinX_ML_Internship/
 │   ├── Day1/                          # Sprint 1 Kickoff & Baseline Model
 │   ├── Day2/                          # Activations & Forward Pass (Neural Network Foundations)
 │   ├── Day3/                          # Understanding Training + Mentor Review
-│   ├── Day4/                          # (planned)
+│   ├── Day4/                          # Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
 │   └── Day5/                          # (planned)
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
@@ -429,8 +429,16 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - Explained the chain rule and its role in backpropagation for decomposing complex gradients into local derivatives.
 * **Tools used:** NumPy, Matplotlib.
 
-#### Day 4: Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
-🔲 *Planned — not yet completed.*
+#### ✅ Day 4: Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
+* **Objective:** Building and training a neural network using TensorFlow/Keras on the Heart Disease binary classification dataset, with regularization to improve generalization.
+* **Key Tasks & Accomplishments:**
+  - Built a **baseline Keras Sequential network** with two Dense hidden layers (64→32 neurons, ReLU) and a Sigmoid output layer for binary classification.
+  - Compiled with Adam optimizer (lr=0.001), `binary_crossentropy` loss, and `accuracy` metric; trained for 50 epochs with `validation_split=0.2`.
+  - Plotted training vs validation loss and accuracy curves, diagnosing **overfitting** from the widening gap between curves.
+  - Built an **enhanced model** incorporating `BatchNormalization()` after each Dense layer and `Dropout(0.3)` to regularize training.
+  - Overlaid the enhanced model's curves against the baseline to demonstrate stabilized training and reduced overfitting.
+  - Evaluated the best model on the unseen test set and compared results against the Day 1 Logistic Regression baseline (Accuracy: 0.8533, F1: 0.8657, ROC-AUC: 0.9159).
+* **Tools used:** `scikit-learn` (`ColumnTransformer`, `Pipeline`, `SimpleImputer`, `StandardScaler`, `OneHotEncoder`, `train_test_split`, metrics), TensorFlow/Keras (`Sequential`, `Dense`, `BatchNormalization`, `Dropout`), NumPy, Pandas, Matplotlib.
 
 #### Day 5: Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective
 🔲 *Planned — not yet completed.*
