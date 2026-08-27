@@ -64,7 +64,7 @@ BinX_ML_Internship/
 │   ├── Day2/                          # Activations & Forward Pass (Neural Network Foundations)
 │   ├── Day3/                          # Understanding Training + Mentor Review
 │   ├── Day4/                          # Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
-│   └── Day5/                          # (planned)
+│   └── Day5/                          # Tuning, Evaluation & Sprint Review ✅
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -440,8 +440,16 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - Evaluated the best model on the unseen test set and compared results against the Day 1 Logistic Regression baseline (Accuracy: 0.8533, F1: 0.8657, ROC-AUC: 0.9159).
 * **Tools used:** `scikit-learn` (`ColumnTransformer`, `Pipeline`, `SimpleImputer`, `StandardScaler`, `OneHotEncoder`, `train_test_split`, metrics), TensorFlow/Keras (`Sequential`, `Dense`, `BatchNormalization`, `Dropout`), NumPy, Pandas, Matplotlib.
 
-#### Day 5: Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective
-🔲 *Planned — not yet completed.*
+#### ✅ Day 5: Tuning, Evaluation & Sprint Review — Sprint 1 Close-Out
+* **Objective:** Systematically tuning a neural network, implementing callbacks, evaluating the final model, and closing out Sprint 1 with a review and retrospective.
+* **Key Tasks & Accomplishments:**
+  - Applied disciplined **one-variable-at-a-time tuning** across 4 hyperparameters (learning rate, architecture, dropout rate, batch size) with **18+ experiments** recorded in a consolidated experiment log.
+  - Selected best learning rate (0.0005), architecture ([128, 64, 32]), dropout rate (0.2), and batch size (32).
+  - Implemented **EarlyStopping** (patience=5, restore_best_weights=True) and **ModelCheckpoint** (save_best_only=True) as practical training best practices.
+  - Evaluated the final tuned model on the held-out test set (Accuracy: 0.8370, F1: 0.8485, ROC-AUC: 0.9076) and compared against the Day 1 baseline (0.8533, 0.8657, 0.9159) and Day 4 enhanced model (0.8261, 0.8447, 0.8991).
+  - The tuned neural network did not beat the baseline on any metric — demonstrating that more complex models do not always outperform simpler baselines on small tabular datasets.
+  - All **10/10 sprint acceptance criteria PASSED**. Sprint retrospective identified key improvements for Sprint 2.
+* **Tools used:** `scikit-learn` (`ColumnTransformer`, `Pipeline`, `SimpleImputer`, `StandardScaler`, `OneHotEncoder`, `train_test_split`, metrics), TensorFlow/Keras (`Sequential`, `Dense`, `BatchNormalization`, `Dropout`, `EarlyStopping`, `ModelCheckpoint`), NumPy, Pandas, Matplotlib.
 
 ---
 
