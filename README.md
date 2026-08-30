@@ -59,12 +59,18 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Dimensionality Reduction with PCA
 │   ├── Day4/                          # t-SNE Visualization & Anomaly Detection
 │   └── Day5-ProjectKickoff/            # Project Kickoff & Plan (Cardiac Patient Monitoring System)
-├── BinX_Week_06/                      # Week 6: Deep Learning & Applied Project — Sprint 1 (In Progress 🔄)
+├── BinX_Week_06/                      # Week 6: Deep Learning & Applied Project — Sprint 1 (Completed ✅)
 │   ├── Day1/                          # Sprint 1 Kickoff & Baseline Model
 │   ├── Day2/                          # Activations & Forward Pass (Neural Network Foundations)
 │   ├── Day3/                          # Understanding Training + Mentor Review
 │   ├── Day4/                          # Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
 │   └── Day5/                          # Tuning, Evaluation & Sprint Review ✅
+├── BinX_Week_07/                      # Week 7: Deep Learning & Applied Project — Sprint 2 (In Progress 🔄)
+│   ├── Day1/                          # Sprint 2 Kickoff & Convolution ✅
+│   ├── Day2/                          # Feature Engineering (Pending)
+│   ├── Day3/                          # Cross-Validation Pipeline (Pending)
+│   ├── Day4/                          # Hyperparameter Tuning (Pending)
+│   └── Day5/                          # Sprint 2 Review & Retrospective (Pending)
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -332,7 +338,7 @@ BinX_ML_Internship/
 
 ---
 
-### 📅 Week 5: Unsupervised Learning — Clustering & Dimensionality Reduction (In Progress)
+### 📅 Week 5: Unsupervised Learning — Clustering & Dimensionality Reduction (Completed ✅)
 
 #### ✅ Day 1: K-Means Clustering & K Selection (Elbow + Silhouette)
 * **Objective:** Implementing the first unsupervised learning lab — clustering unlabeled data with K-Means, selecting the optimal number of clusters via the Elbow Method and Silhouette Score, and interpreting the discovered passenger segments.
@@ -394,7 +400,7 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
 
 ---
 
-### 📅 Week 6: Deep Learning & Applied Project — Sprint 1 (In Progress 🔄)
+### 📅 Week 6: Deep Learning & Applied Project — Sprint 1 (Completed ✅)
 
 #### ✅ Day 1: Sprint 1 Kickoff & Baseline Model
 * **Objective:** Establishing a robust, reproducible machine learning baseline pipeline on the Heart Disease dataset using standard tabular modeling techniques (Logistic Regression), whose metrics every neural network developed in subsequent sprints must beat.
@@ -444,12 +450,38 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
 * **Objective:** Systematically tuning a neural network, implementing callbacks, evaluating the final model, and closing out Sprint 1 with a review and retrospective.
 * **Key Tasks & Accomplishments:**
   - Applied disciplined **one-variable-at-a-time tuning** across 4 hyperparameters (learning rate, architecture, dropout rate, batch size) with **18+ experiments** recorded in a consolidated experiment log.
-  - Selected best learning rate (0.0005), architecture ([128, 64, 32]), dropout rate (0.2), and batch size (32).
+  - Selected best learning rate (0.001), architecture (Baseline [64, 32]), dropout rate (0.5), and batch size (32).
   - Implemented **EarlyStopping** (patience=5, restore_best_weights=True) and **ModelCheckpoint** (save_best_only=True) as practical training best practices.
-  - Evaluated the final tuned model on the held-out test set (Accuracy: 0.8370, F1: 0.8485, ROC-AUC: 0.9076) and compared against the Day 1 baseline (0.8533, 0.8657, 0.9159) and Day 4 enhanced model (0.8261, 0.8447, 0.8991).
+  - Evaluated the final tuned model on the held-out test set (Accuracy: 0.8152, F1: 0.8426, ROC-AUC: 0.9051) and compared against the Day 1 baseline (0.8533, 0.8657, 0.9159) and Day 4 enhanced model (0.8261, 0.8447, 0.8991).
   - The tuned neural network did not beat the baseline on any metric — demonstrating that more complex models do not always outperform simpler baselines on small tabular datasets.
   - All **10/10 sprint acceptance criteria PASSED**. Sprint retrospective identified key improvements for Sprint 2.
 * **Tools used:** `scikit-learn` (`ColumnTransformer`, `Pipeline`, `SimpleImputer`, `StandardScaler`, `OneHotEncoder`, `train_test_split`, metrics), TensorFlow/Keras (`Sequential`, `Dense`, `BatchNormalization`, `Dropout`, `EarlyStopping`, `ModelCheckpoint`), NumPy, Pandas, Matplotlib.
+
+---
+
+### 📅 Week 7: Deep Learning & Applied Project — Sprint 2 (In Progress 🔄)
+
+#### ✅ Day 1: Sprint 2 Kickoff & Convolution
+* **Objective:** Completing Sprint 2 planning, learning convolution through a hands-on edge-detection demonstration, understanding parameter sharing, and confirming the correct architecture for the project's tabular data.
+* **Key Tasks & Accomplishments:**
+  - Completed **Sprint 2 planning** with a 7-task backlog (feature engineering, cross-validation, expanded tuning, learning rate scheduling, experiment tracker, architecture exploration, sprint review) with priorities and acceptance criteria.
+  - Defined the **Sprint 2 goal**: improve the heart-disease classification pipeline through feature engineering, cross-validation, and systematic tuning — while correctly selecting the architecture.
+  - Compared the three main deep learning architectures — **CNN** (images/spatial), **RNN/Transformer** (sequential/text), **Dense** (tabular) — and confirmed that the Heart Disease dataset (918 patients × 14 columns, no spatial grid, no temporal sequence) is **tabular**, making the **dense (fully connected) network** the correct choice.
+  - Created a 256×256 **synthetic grayscale image** with geometric shapes (rectangles, lines, gradients) for the convolution demonstration.
+  - Defined two hand-crafted **3×3 edge-detection kernels** — **horizontal** (detects top-to-bottom intensity changes) and **vertical** (detects left-to-right intensity changes).
+  - Applied both kernels via `scipy.ndimage.convolve` and computed a **gradient magnitude** map combining both edge directions.
+  - Visualized the original image, horizontal feature map, vertical feature map, and combined gradient magnitude in a 2×3 subplot grid.
+  - Demonstrated numerically why convolution is parameter-efficient: a 3×3 kernel with **9 parameters** produces a feature map across 65,025 output positions, while a dense layer would require **~4.2 billion parameters** — a ~470 million× difference from **parameter sharing**.
+  - Key takeaway: **architecture must match data** — CNNs for images, RNNs for sequences, Dense for tabular. Our project uses tabular data → dense network is correct. The baseline remains the target: Accuracy > 0.8533, F1 > 0.8657, ROC-AUC > 0.9159.
+* **Tools used:** NumPy, Matplotlib (`GridSpec`), `scipy.ndimage.convolve`.
+
+#### Day 2: Feature Engineering *(Pending)*
+
+#### Day 3: Cross-Validation Pipeline *(Pending)*
+
+#### Day 4: Hyperparameter Tuning *(Pending)*
+
+#### Day 5: Sprint 2 Review & Retrospective *(Pending)*
 
 ---
 
