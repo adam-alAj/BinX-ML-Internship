@@ -67,7 +67,7 @@ BinX_ML_Internship/
 │   └── Day5/                          # Tuning, Evaluation & Sprint Review ✅
 ├── BinX_Week_07/                      # Week 7: Deep Learning & Applied Project — Sprint 2 (In Progress 🔄)
 │   ├── Day1/                          # Sprint 2 Kickoff & Convolution ✅
-│   ├── Day2/                          # Feature Engineering (Pending)
+│   ├── Day2/                          # Building CNNs & Transfer Learning ✅
 │   ├── Day3/                          # Cross-Validation Pipeline (Pending)
 │   ├── Day4/                          # Hyperparameter Tuning (Pending)
 │   └── Day5/                          # Sprint 2 Review & Retrospective (Pending)
@@ -475,7 +475,18 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - Key takeaway: **architecture must match data** — CNNs for images, RNNs for sequences, Dense for tabular. Our project uses tabular data → dense network is correct. The baseline remains the target: Accuracy > 0.8533, F1 > 0.8657, ROC-AUC > 0.9159.
 * **Tools used:** NumPy, Matplotlib (`GridSpec`), `scipy.ndimage.convolve`.
 
-#### Day 2: Feature Engineering *(Pending)*
+#### ✅ Day 2: Building CNNs & Transfer Learning
+* **Objective:** Building a full CNN with convolution, pooling, and dense layers from scratch, applying data augmentation to reduce overfitting, and using transfer learning with a pre-trained MobileNetV2 to obtain strong results from limited data — then comparing all three approaches fairly.
+* **Key Tasks & Accomplishments:**
+  - Completed the required **computer-vision educational lab** using a skin lesion image dataset (11,879 train + 2,000 test images, binary Benign vs Malignant classification).
+  - Built a **CNN from scratch** — 3-block Conv2D→MaxPool architecture trained on 128×128 images with ~4.3M parameters (Conv2D(32)→Conv2D(64)→Conv2D(128)→Flatten→Dense(128)→Dense(1)).
+  - Implemented **data augmentation** with RandomFlip, RandomRotation (±15%), and RandomZoom (±15%) applied during training only, using the Functional API to correctly compose the nested augmentation Sequential model.
+  - Applied **transfer learning** with a frozen MobileNetV2 backbone (ImageNet pre-trained) and a new classification head (GlobalAveragePooling2D→Dense(128)→Dropout(0.3)→Dense(1, Sigmoid)) trained on 224×224 images.
+  - All three experiments use identical train/val/test splits, Adam optimizer, binary cross-entropy loss, and EarlyStopping — ensuring a fair comparison.
+  - Generated training curves, baseline-vs-augmentation comparison plots, three-way experiment table, confusion matrix, and classification report.
+  - Clearly documented that this CNN lab is an **educational exercise** — the project's core model remains the **dense network from Week 6** for the tabular Heart Disease dataset. CNNs are NOT forced onto tabular data.
+  - **Dataset:** [Melanoma Skin Cancer — Benign vs Malignant](https://www.kaggle.com/datasets/ailearner-researchlab/melanoma-skin-cancer-dataset-benign-vs-malignant) (Kaggle) — download and place in `Data/images-dataset/`.
+* **Tools used:** TensorFlow/Keras (`Sequential`, `Functional API`, `Conv2D`, `MaxPooling2D`, `Dense`, `Dropout`, `RandomFlip`, `RandomRotation`, `RandomZoom`, `MobileNetV2`, `EarlyStopping`), NumPy, Matplotlib, scikit-learn (`classification_report`, `confusion_matrix`).
 
 #### Day 3: Cross-Validation Pipeline *(Pending)*
 
