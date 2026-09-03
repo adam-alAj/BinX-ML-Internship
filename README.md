@@ -68,9 +68,9 @@ BinX_ML_Internship/
 ├── BinX_Week_07/                      # Week 7: Deep Learning & Applied Project — Sprint 2 (In Progress 🔄)
 │   ├── Day1/                          # Sprint 2 Kickoff & Convolution ✅
 │   ├── Day2/                          # Building CNNs & Transfer Learning ✅
-│   ├── Day3/                          # Cross-Validation Pipeline (Pending)
-│   ├── Day4/                          # Hyperparameter Tuning (Pending)
-│   └── Day5/                          # Sprint 2 Review & Retrospective (Pending)
+│   ├── Day3/                          # RNNs & LSTMs for Sequential Data ✅
+│   ├── Day4/                          # Attention & Transformers ✅
+│   └── Day5/                          # Sprint 2 Close-Out & Model Advancement ✅
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -488,9 +488,29 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - **Dataset:** [Melanoma Skin Cancer — Benign vs Malignant](https://www.kaggle.com/datasets/ailearner-researchlab/melanoma-skin-cancer-dataset-benign-vs-malignant) (Kaggle) — download and place in `Data/images-dataset/`.
 * **Tools used:** TensorFlow/Keras (`Sequential`, `Functional API`, `Conv2D`, `MaxPooling2D`, `Dense`, `Dropout`, `RandomFlip`, `RandomRotation`, `RandomZoom`, `MobileNetV2`, `EarlyStopping`), NumPy, Matplotlib, scikit-learn (`classification_report`, `confusion_matrix`).
 
-#### Day 3: Cross-Validation Pipeline *(Pending)*
+#### ✅ Day 3: RNNs & LSTMs for Sequential Data
+* **Objective:** Completing the mid-sprint architectural trio by shifting from spatial data (Days 1–2) to temporal/sequential data — building a plain RNN baseline and a stacked bidirectional LSTM to classify ECG heartbeat signals, demonstrating why gated memory matters for long sequences.
+* **Key Tasks & Accomplishments:**
+  - Built and trained a **Plain SimpleRNN Baseline** (64 units) with dropout and gradient clipping achieving Test Accuracy 0.7701 and Macro F1 0.5597, demonstrating the vanishing gradient limitation over 187 timesteps.
+  - Built and trained a **Stacked Bidirectional LSTM** (64 → 32 units) with batch normalization, learning rate scheduling, and early stopping achieving Test Accuracy 0.9275 and Macro F1 0.7676 (+20.79% Macro F1 improvement), validating that LSTM's gated cell state solves the vanishing gradient problem.
+  - Conducted an **Order-Awareness Ablation** — the same LSTM trained on shuffled sequences degraded Macro F1 from 0.7676 → 0.4219, confirming temporal order contains clinically meaningful information.
+  - Used `compute_class_weight('balanced')` for the severe imbalance (~113× between majority and minority classes) and Macro F1 as the primary metric.
+  - Dataset: MIT-BIH Arrhythmia Database (87,554 train + 21,892 test heartbeats, 187 timesteps, 5-class arrhythmia classification).
+* **Tools used:** TensorFlow/Keras (`Sequential`, `SimpleRNN`, `LSTM`, `Bidirectional`, `BatchNormalization`, `Dropout`), scikit-learn (`classification_report`, `confusion_matrix`, `f1_score`), NumPy, Pandas, Matplotlib.
 
-#### Day 4: Hyperparameter Tuning *(Pending)*
+#### ✅ Day 4: Attention & Transformers
+* **Objective:** Completing the Week 7 architectural quartet by shifting from sequential signal processing to natural language processing — fine-tuning a pre-trained AraBERT Transformer on Arabic sentiment reviews and making the final architecture decision for the project.
+* **Key Tasks & Accomplishments:**
+  - Explained the fundamental limitations of RNN/LSTM memory (sequential bottleneck, vanishing gradients, fixed-length hidden state) and how **self-attention** solves them (parallel processing, direct long-range connections, dynamic relevance).
+  - Described the full **Transformer architecture** — token embeddings, positional encoding, multi-head self-attention, feed-forward networks, layer normalization, residual connections, and the encoder stack.
+  - Loaded **AraBERT v2** (`aubmindlab/bert-base-arabertv2`, ~110M parameters) pre-trained on 67M Arabic sentences via Hugging Face `AutoModelForSequenceClassification`.
+  - Loaded the **330K Arabic Sentiment Reviews** dataset (binary positive/negative), removed duplicates, and created a stratified 20,000-sample subset with 50/50 class balance. Split into Train (14,000) / Validation (3,000) / Test (3,000).
+  - Fine-tuned AraBERT using the Hugging Face `Trainer` API with FP16 mixed precision, linear warmup+decay scheduling, AdamW optimizer (lr=2e-5), and a custom `EarlyStoppingTrainer` subclass with patience-based stopping on validation F1.
+  - Evaluated the fine-tuned Transformer on the held-out test set with accuracy, precision (macro), recall (macro), F1-score (macro), confusion matrix, and per-class classification report.
+  - Compared the Transformer against the Day 3 LSTM across architectural properties (parallelization, long-range dependencies, pre-trained knowledge, data efficiency, interpretability, inference speed).
+  - Made the **evidence-based architecture decision** to use AraBERT as the project's core architecture for Arabic text classification — following the Week 7 principle: match the architecture to the data type (Text → Transformer, Signals → LSTM, Images → CNN).
+  - Refactored the notebook from a CPU-only manual-loop training script into a GPU-accelerated Colab-ready pipeline with automatic checkpoint persistence to Google Drive.
+* **Tools used:** PyTorch, Hugging Face (`AutoTokenizer`, `AutoModelForSequenceClassification`, `Trainer`, `TrainingArguments`), `evaluate`, scikit-learn (`classification_report`, `confusion_matrix`, `f1_score`), NumPy, Pandas, Matplotlib, Seaborn.
 
 #### Day 5: Sprint 2 Review & Retrospective *(Pending)*
 

@@ -3,3 +3,5 @@
 docs/*
 .venv-PY314/
 Data/images-dataset/
+Data/ECG-Heartbeat-dataset/
+Data/ALP_dataset/
