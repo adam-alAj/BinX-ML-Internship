@@ -65,12 +65,15 @@ BinX_ML_Internship/
 │   ├── Day3/                          # Understanding Training + Mentor Review
 │   ├── Day4/                          # Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
 │   └── Day5/                          # Tuning, Evaluation & Sprint Review ✅
-├── BinX_Week_07/                      # Week 7: Deep Learning & Applied Project — Sprint 2 (In Progress 🔄)
+├── BinX_Week_07/                      # Week 7: Deep Learning & Applied Project — Sprint 2 (Completed ✅)
 │   ├── Day1/                          # Sprint 2 Kickoff & Convolution ✅
 │   ├── Day2/                          # Building CNNs & Transfer Learning ✅
 │   ├── Day3/                          # RNNs & LSTMs for Sequential Data ✅
 │   ├── Day4/                          # Attention & Transformers ✅
 │   └── Day5/                          # Sprint 2 Close-Out & Model Advancement ✅
+├── BinX_Week_08/                      # Week 8: Deep Learning & Applied Project — Sprint 3 (In Progress 🔄)
+│   ├── Day1/                          # Sprint 3 Planning & NLP Preprocessing ✅
+│   └── README.md
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
 ├── requirements.txt
@@ -512,7 +515,36 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - Refactored the notebook from a CPU-only manual-loop training script into a GPU-accelerated Colab-ready pipeline with automatic checkpoint persistence to Google Drive.
 * **Tools used:** PyTorch, Hugging Face (`AutoTokenizer`, `AutoModelForSequenceClassification`, `Trainer`, `TrainingArguments`), `evaluate`, scikit-learn (`classification_report`, `confusion_matrix`, `f1_score`), NumPy, Pandas, Matplotlib, Seaborn.
 
-#### Day 5: Sprint 2 Review & Retrospective *(Pending)*
+#### ✅ Day 5: Sprint 2 Close-Out & Model Advancement
+* **Objective:** Completing Sprint 2 close-out by confirming the dense network as the correct core architecture for tabular data, conducting 6 systematic experiments, and documenting the Sprint 2 retrospective with carry-forward actions for Sprint 3.
+* **Key Tasks & Accomplishments:**
+  - Confirmed the **dense (fully connected) network** as the correct core architecture for the project's tabular clinical data (918 patients × 11 features), following the Week 7 principle: *match the architecture to the data and task*.
+  - Rejected CNN (images), LSTM (sequential signals), and Transformer (text) as inappropriate for tabular data — the Day 3 LSTM (ECG, F1=0.7676) and Day 4 AraBERT (Arabic text, F1=0.9000) were educational experiments on different datasets.
+  - Conducted 6 systematic experiments (EXP-00 to EXP-05) with full configuration logging, testing wider/deeper architectures, learning rate scheduling (ReduceLROnPlateau), and combined Dropout+L2 regularization.
+  - **EXP-02** (wider [128,64] + LR scheduling) achieved the highest F1=0.8585.
+  - The **final evaluated model EXP-05** ([128,64] + Dropout(0.3) + L2(0.001) + scheduling) achieved F1=0.8426, beating the Week 6 Logistic Regression baseline (F1=0.8208) by +2.66% but not surpassing the Sprint 1 neural network (F1=0.8654).
+  - Produced a complete comparison table, confusion matrix, classification report, training/validation curves, Sprint Review evidence, and Sprint Retrospective with a concrete Sprint 3 action (k-fold cross-validation + gradient boosting exploration).
+* **Tools used:** TensorFlow/Keras (`Sequential`, `Dense`, `Dropout`, `BatchNormalization`, `EarlyStopping`, `ReduceLROnPlateau`), scikit-learn (`ColumnTransformer`, `Pipeline`, metrics), NumPy, Pandas, Matplotlib.
+
+---
+
+### 📅 Week 8: Deep Learning & Applied Project — Sprint 3 (In Progress 🔄)
+
+#### ✅ Day 1: Sprint 3 Planning & NLP Preprocessing
+* **Objective:** Completing Sprint 3 planning and building a task-aware Arabic NLP preprocessing pipeline that preserves sentiment-critical signal.
+* **Key Tasks & Accomplishments:**
+  - Completed **Sprint 3 planning** with a 15-item backlog covering integration & full evaluation of the Arabic sentiment classifier.
+  - Defined the **Sprint 3 goal**: turn the Arabic sentiment classifier (AraBERT v2, F1=0.9000 from Week 7) into a complete, rigorously evaluated and explained pipeline.
+  - Built a **task-aware Arabic NLP preprocessing pipeline**: normalize → tokenize → clean → stop-words → lemmatize, with sentiment-signal preservation (negation words protected).
+  - Created reusable **`preprocess_text()`** function with quality checks and saved cleaned text for Day 2.
+  - Verified environment: Python 3.13, Pandas 3.0.3, NumPy 2.5.1, scikit-learn 1.9.0, NLTK 3.10.3, qalsadi (Arabic lemmatizer).
+  - Carried forward Sprint 2 improvement: **k-fold cross-validation** planned for classical-model evaluation in Day 2.
+* **Tools used:** Pandas, NumPy, scikit-learn, NLTK (ISRI Arabic stemmer), qalsadi (dictionary-based Arabic lemmatizer), Matplotlib.
+
+#### Day 2: Text Representation — TF-IDF & Word Embeddings *(Planned)*
+#### Day 3: Computer-Vision Preprocessing & Mentor Review *(Planned)*
+#### Day 4: Model Integration — End-to-End `predict()` Pipeline *(Planned)*
+#### Day 5: Full Evaluation, SHAP & Sprint Review *(Planned)*
 
 ---
 
