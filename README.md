@@ -73,6 +73,7 @@ BinX_ML_Internship/
 │   └── Day5/                          # Sprint 2 Close-Out & Model Advancement ✅
 ├── BinX_Week_08/                      # Week 8: Deep Learning & Applied Project — Sprint 3 (In Progress 🔄)
 │   ├── Day1/                          # Sprint 3 Planning & NLP Preprocessing ✅
+│   ├── Day2/                          # Text Representation — TF-IDF & Word Embeddings ✅
 │   └── README.md
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
@@ -541,7 +542,18 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - Carried forward Sprint 2 improvement: **k-fold cross-validation** planned for classical-model evaluation in Day 2.
 * **Tools used:** Pandas, NumPy, scikit-learn, NLTK (ISRI Arabic stemmer), qalsadi (dictionary-based Arabic lemmatizer), Matplotlib.
 
-#### Day 2: Text Representation — TF-IDF & Word Embeddings *(Planned)*
+#### ✅ Day 2: Text Representation — TF-IDF & Word Embeddings
+* **Objective:** Converting cleaned Arabic text into numerical representations (TF-IDF and word embeddings), benchmarking them with a classical classifier, and making an evidence-based representation decision for the Arabic sentiment project.
+* **Key Tasks & Accomplishments:**
+  - **TF-IDF implementation** — `TfidfVectorizer` fitted on the 14,000 training reviews only (no leakage); validation sweep (3k / 5k / 10k / 20k features) selected **max_features = 10,000** (validation macro-F1 0.8503).
+  - **Classical baseline** — Logistic Regression on the sparse TF-IDF matrix: **test Accuracy 0.8623 · Precision (macro) 0.8624 · Recall (macro) 0.8623 · F1 (macro) 0.8623 · ROC-AUC 0.9417** on the same 3,000-review test set as Week 7.
+  - **Stratified cross-validation** — 5-fold CV of the full vectorizer+classifier pipeline: macro-F1 = **0.8556 ± 0.0033** (stable).
+  - **Word embeddings** — two Arabic-compatible sources: a **Word2Vec model trained on the train split only** (gensim, skip-gram, 100-d, 8,688 words) and the **pre-trained AraBERT v2 embedding matrix** (768-d × 64k, re-used from the Week-7 cached model).
+  - **Semantic-geometry demonstration** — nearest neighbours in both spaces recover polarity and consumer-domain clusters.
+  - **Embedding-based document representation** — mean-pooled word vectors + Logistic Regression: Word2Vec-mean **0.8350**, AraBERT-static-mean **0.8313** (test macro-F1).
+  - **Final decision** — TF-IDF selected as the classical-thread representation (fast, interpretable, best classical score 0.8623); **contextual AraBERT v2** remains the project's core model (best measured representation: 0.9000).
+* **Tools used:** scikit-learn (`TfidfVectorizer`, `LogisticRegression`, metrics), gensim (`Word2Vec`), Hugging Face AraBERT v2, Pandas, NumPy, Matplotlib, Seaborn.
+
 #### Day 3: Computer-Vision Preprocessing & Mentor Review *(Planned)*
 #### Day 4: Model Integration — End-to-End `predict()` Pipeline *(Planned)*
 #### Day 5: Full Evaluation, SHAP & Sprint Review *(Planned)*
