@@ -74,6 +74,8 @@ BinX_ML_Internship/
 ├── BinX_Week_08/                      # Week 8: Deep Learning & Applied Project — Sprint 3 (In Progress 🔄)
 │   ├── Day1/                          # Sprint 3 Planning & NLP Preprocessing ✅
 │   ├── Day2/                          # Text Representation — TF-IDF & Word Embeddings ✅
+│   ├── Day3/                          # Computer Vision Preprocessing with OpenCV ✅
+│   ├── Day4/                          # Model Integration & Error Analysis ✅
 │   └── README.md
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
@@ -554,7 +556,17 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - **Final decision** — TF-IDF selected as the classical-thread representation (fast, interpretable, best classical score 0.8623); **contextual AraBERT v2** remains the project's core model (best measured representation: 0.9000).
 * **Tools used:** scikit-learn (`TfidfVectorizer`, `LogisticRegression`, metrics), gensim (`Word2Vec`), Hugging Face AraBERT v2, Pandas, NumPy, Matplotlib, Seaborn.
 
-#### Day 3: Computer-Vision Preprocessing & Mentor Review *(Planned)*
+#### ✅ Day 3: Computer Vision Preprocessing with OpenCV & Mentor Review
+* **Objective:** Building a robust, defensive OpenCV image preprocessing engine and modern Keras data augmentation pipeline aligned with transfer-learning requirements.
+* **Key Tasks & Accomplishments:**
+  - **OpenCV Ingestion & Color Spaces:** Demonstrated and visually proved OpenCV's default BGR memory layout versus RGB. Verified mathematically that uncorrected channel inversion flips spectral signals, leading to silent inference failures.
+  - **Production Preprocessing Engine (`preprocess_image_cv`):** Built a reusable, defensive image preprocessor supporting multiple normalization modes (`standard` [0, 1], `mobilenet` [-1, 1], `caffe` BGR-mean subtracted, and unscaled float). Features strict error handling for missing/corrupted files, automated aspect-ratio preserving letterboxing, and `INTER_AREA` spatial downsampling.
+  - **Classical Edge Extraction:** Implemented Gaussian smoothing and two-stage Canny edge detection for structural feature isolation on clinical dermoscopy samples.
+  - **Modern Keras Augmentation Pipeline:** Built a hardware-accelerated augmentation sequence (`RandomFlip`, `RandomRotation`, `RandomZoom`, `RandomBrightness`, `RandomContrast`) with task-specific justifications for medical/lesion imagery. Visually validated 8 stochastic realizations demonstrating preserved diagnostic cores.
+  - **Transfer Learning Compatibility:** Confirmed exact numerical parity ($< 10^{-5}$ discrepancy) with official Keras `preprocess_input` and zero-warning propagation through a pre-trained `MobileNetV2` feature extractor.
+  - **Quality Audit Suite:** Executed comprehensive assertions verifying shapes, ranges, latencies (1.9–2.8 ms per image), and zero NaN/Inf values. Results logged to [`day3_outputs/day3_cv_audit.json`](./BinX_Week_08/Day3/day3_outputs/day3_cv_audit.json).
+  - **Day 4 Integration Handoff:** Exported standalone module [`day3_cv_preprocessor.py`](./BinX_Week_08/Day3/day3_cv_preprocessor.py) for direct reuse in Day 4's unified `predict()` interface.
+* **Tools used:** OpenCV (`cv2`), TensorFlow/Keras (`RandomFlip`, `RandomRotation`, `MobileNetV2`), NumPy, Matplotlib.
 #### Day 4: Model Integration — End-to-End `predict()` Pipeline *(Planned)*
 #### Day 5: Full Evaluation, SHAP & Sprint Review *(Planned)*
 
