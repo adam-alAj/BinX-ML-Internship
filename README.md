@@ -76,6 +76,7 @@ BinX_ML_Internship/
 │   ├── Day2/                          # Text Representation — TF-IDF & Word Embeddings ✅
 │   ├── Day3/                          # Computer Vision Preprocessing with OpenCV ✅
 │   ├── Day4/                          # Model Integration & Error Analysis ✅
+│   ├── Day5/                          # Full Evaluation, SHAP Explainability & Sprint Review ✅
 │   └── README.md
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
