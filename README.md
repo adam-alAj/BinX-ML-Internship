@@ -18,7 +18,7 @@ Welcome to my repository for the **BinX Tech AI & Machine Learning Internship Pr
 
 The **BinX Tech AI & ML Internship Program** is an intensive, practical training program designed to build industry-ready skills in Artificial Intelligence, Machine Learning, and Data Science.
 
-* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (Completed ✅ Days 1–4, Project Kickoff ✅ Day 5) → Phase 3 — Deep Learning & Applied Project (In Progress 🔄)
+* **Track:** Phase 1 — Foundations (40+ Hours) → Phase 2 — Statistical Analysis & ML Foundations → Evaluation, Tuning & Pipelines (Completed ✅) → Unsupervised Learning — Clustering & Dimensionality Reduction (Completed ✅ Days 1–4, Project Kickoff ✅ Day 5) → Phase 3 — Deep Learning & Applied Project (Sprint 1–3 Completed ✅, Sprint 4 In Progress 🔄)
 * **Focus Areas:** Python Environment Setup, Idiomatic Python, NumPy Numerical Computing, Pandas Data Analysis, Matplotlib Data Visualization, Statistical Analysis with Real Datasets, and scikit-learn Machine Learning Workflows.
 * **Core Principle:** Professional, reproducible Jupyter Notebook workflows fully documented with Markdown narratives and pushed regularly via Git/GitHub.
 
@@ -71,12 +71,19 @@ BinX_ML_Internship/
 │   ├── Day3/                          # RNNs & LSTMs for Sequential Data ✅
 │   ├── Day4/                          # Attention & Transformers ✅
 │   └── Day5/                          # Sprint 2 Close-Out & Model Advancement ✅
-├── BinX_Week_08/                      # Week 8: Deep Learning & Applied Project — Sprint 3 (In Progress 🔄)
+├── BinX_Week_08/                      # Week 8: Deep Learning & Applied Project — Sprint 3 (Completed ✅)
 │   ├── Day1/                          # Sprint 3 Planning & NLP Preprocessing ✅
 │   ├── Day2/                          # Text Representation — TF-IDF & Word Embeddings ✅
 │   ├── Day3/                          # Computer Vision Preprocessing with OpenCV ✅
 │   ├── Day4/                          # Model Integration & Error Analysis ✅
 │   ├── Day5/                          # Full Evaluation, SHAP Explainability & Sprint Review ✅
+│   └── README.md
+├── BinX_Week_09/                      # Week 9: Deep Learning & Applied Project — Sprint 4 (In Progress 🔄)
+│   ├── Day1/                          # Sprint 4 Planning, Serialization & MLOps ✅
+│   ├── Day2/                          # FastAPI Serving (Planned)
+│   ├── Day3/                          # Streamlit Dashboard (Planned)
+│   ├── Day4/                          # Public Deployment (Planned)
+│   ├── Day5/                          # Final Verification & Sprint Review (Planned)
 │   └── README.md
 ├── Cardiac_Patient_Monitoring_System_Project/   # Individual 14-Day ML Capstone Project (In Progress)
 ├── .gitignore
@@ -568,8 +575,33 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - **Quality Audit Suite:** Executed comprehensive assertions verifying shapes, ranges, latencies (1.9–2.8 ms per image), and zero NaN/Inf values. Results logged to [`day3_outputs/day3_cv_audit.json`](./BinX_Week_08/Day3/day3_outputs/day3_cv_audit.json).
   - **Day 4 Integration Handoff:** Exported standalone module [`day3_cv_preprocessor.py`](./BinX_Week_08/Day3/day3_cv_preprocessor.py) for direct reuse in Day 4's unified `predict()` interface.
 * **Tools used:** OpenCV (`cv2`), TensorFlow/Keras (`RandomFlip`, `RandomRotation`, `MobileNetV2`), NumPy, Matplotlib.
-#### Day 4: Model Integration — End-to-End `predict()` Pipeline *(Planned)*
-#### Day 5: Full Evaluation, SHAP & Sprint Review *(Planned)*
+#### Day 4: Model Integration — End-to-End `predict()` Pipeline ✅
+#### Day 5: Full Evaluation, SHAP & Sprint Review ✅
+
+---
+
+### 📅 Week 9: Deep Learning & Applied Project — Sprint 4 (In Progress 🔄)
+
+#### ✅ Day 1: Sprint 4 Planning, Serialization & MLOps
+* **Objective:** Completing Sprint 4 planning and transitioning the validated Sprint 3 pipeline into a production-ready state by serializing the model and all preprocessing objects, establishing reproducibility, and preparing the foundation for Day 2 FastAPI serving, Day 3 Streamlit UI, and Day 4 public deployment.
+* **Key Tasks & Accomplishments:
+  - Completed **Sprint 4 planning** with a deployment backlog (11 tasks covering planning, serialization, API serving, UI, deployment, and review).
+  - Defined the **Sprint 4 goal**: transform the Arabic sentiment classifier into a usable, deployable application.
+  - Reviewed the Sprint 3 retrospective and identified carry-forward items for Sprint 4.
+  - Rebuilt the complete inference pipeline from source artifacts (TF-IDF + Logistic Regression) and verified reproduction against Week 8 baselines (**Test Accuracy 0.8623, F1 0.8623**).
+  - **Serialized the trained model** (`model.joblib`) using `joblib.dump()`.
+  - **Serialized preprocessing artifacts**: `vectorizer.joblib` (10K features), `lemma_table.json` (20K+ entries), `preprocessing_config.json`.
+  - **Verified artifact reload**: all artifacts loaded from disk and the complete inference pipeline reproduced known predictions with **10/10 matches** on sample data and **identical predictions/probabilities** across the full 3,000-sample test set (max probability difference < 1e-6).
+  - Ran **13 artifact integrity checks** — 12/13 PASS, 1 N/A (MLflow not installed).
+  - Established **MLflow traceability** (optional) with experiment logging for parameters, metrics, and artifacts.
+  - Generated a **pinned `requirements.txt`** with exact versions for reproducibility.
+  - Documented the **Day 2 handoff** — artifact loading instructions and the `/predict` endpoint contract for the FastAPI service.
+* **Tools used:** `scikit-learn` (`TfidfVectorizer`, `LogisticRegression`, `accuracy_score`, `f1_score`), `joblib` (serialization), NLTK (tokenization, stopwords), `qalsadi` (Arabic lemmatizer), NumPy, Pandas, JSON, MLflow (optional).
+
+#### Day 2: FastAPI Serving *(Planned)*
+#### Day 3: Streamlit Dashboard *(Planned)*
+#### Day 4: Public Deployment *(Planned)*
+#### Day 5: Final Verification & Sprint Review *(Planned)*
 
 ---
 
