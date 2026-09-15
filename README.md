@@ -80,8 +80,8 @@ BinX_ML_Internship/
 │   └── README.md
 ├── BinX_Week_09/                      # Week 9: Deep Learning & Applied Project — Sprint 4 (In Progress 🔄)
 │   ├── Day1/                          # Sprint 4 Planning, Serialization & MLOps ✅
-│   ├── Day2/                          # FastAPI Serving (Planned)
-│   ├── Day3/                          # Streamlit Dashboard (Planned)
+│   ├── Day2/                          # FastAPI Serving ✅
+│   ├── Day3/                          # Streamlit Dashboard ✅
 │   ├── Day4/                          # Public Deployment (Planned)
 │   ├── Day5/                          # Final Verification & Sprint Review (Planned)
 │   └── README.md
@@ -598,8 +598,25 @@ An **individual 14-day AI/ML capstone project** that consolidates the entire tra
   - Documented the **Day 2 handoff** — artifact loading instructions and the `/predict` endpoint contract for the FastAPI service.
 * **Tools used:** `scikit-learn` (`TfidfVectorizer`, `LogisticRegression`, `accuracy_score`, `f1_score`), `joblib` (serialization), NLTK (tokenization, stopwords), `qalsadi` (Arabic lemmatizer), NumPy, Pandas, JSON, MLflow (optional).
 
-#### Day 2: FastAPI Serving *(Planned)*
-#### Day 3: Streamlit Dashboard *(Planned)*
+#### ✅ Day 2: Serving the Model with FastAPI
+* **Objective:** Building a local REST API with FastAPI to serve the serialized Arabic sentiment classifier, with Pydantic validation, preprocessing reuse, and full notebook-vs-API consistency verification.
+* **Key Tasks & Accomplishments:**
+  - Built a **FastAPI application** (`main.py`) with three endpoints: `GET /` (health check), `GET /health` (probe), and `POST /predict` (sentiment classification).
+  - Defined **Pydantic request/response schemas** with empty-text validation and structured prediction responses.
+  - Created a **shared preprocessing module** (`preprocessing.py`) with reusable `preprocess_text()` and `load_artifacts()` functions, imported by both FastAPI and the Day 3 Streamlit dashboard.
+  - Loaded all **Day 1 artifacts** at server startup; implemented the **full inference pipeline** (raw text → preprocess → vectorize → predict → JSON).
+  - Verified **notebook-vs-API consistency** — 6 Arabic test samples produced identical predictions (10/10 match).
+* **Tools used:** FastAPI, Pydantic, Uvicorn, scikit-learn, joblib, NLTK, qalsadi, NumPy.
+
+#### ✅ Day 3: Interactive Streamlit Dashboard
+* **Objective:** Building an interactive Streamlit dashboard that serves the trained Arabic sentiment classifier to non-technical users, with a clean demo UI suitable for live presentation.
+* **Key Tasks & Accomplishments:**
+  - Built a **Streamlit dashboard** (`app.py`) with text area input, example selector, prediction button, and `st.success`/`st.error` result display with confidence.
+  - Implemented a **Matplotlib horizontal bar chart** for class probability visualization.
+  - Reused the **shared preprocessing module** from Day 2 — exact same pipeline as training.
+  - Applied **`@st.cache_resource`** for artifact loading (load once, not on every rerun).
+  - Achieved **10/10 validation checks PASS** — artifacts load correctly, model is correct, inference works, no retraining, predictions are deterministic.
+* **Tools used:** Streamlit, Matplotlib, scikit-learn, joblib, NLTK, qalsadi, NumPy.
 #### Day 4: Public Deployment *(Planned)*
 #### Day 5: Final Verification & Sprint Review *(Planned)*
 
